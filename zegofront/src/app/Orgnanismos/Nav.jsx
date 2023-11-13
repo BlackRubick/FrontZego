@@ -23,7 +23,7 @@ const pages = [
   },
   {
     nombrePage: "Servicios",
-    href: "../Imagen",
+    href: "../servicios",
   },
   {
     nombrePage: "Galeria",
