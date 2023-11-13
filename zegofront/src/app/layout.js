@@ -1,4 +1,5 @@
 import Nav from "../app/Orgnanismos/Nav";
+import Footer from "./Orgnanismos/Footer";
 import "../../css/globals.css"
 
 export default function RootLayout({ children }) {
@@ -10,6 +11,9 @@ export default function RootLayout({ children }) {
         </header>
 
         <main>{children}</main>
+        <footer>
+          <Footer/>
+        </footer>
       </body>
     </html>
   );
