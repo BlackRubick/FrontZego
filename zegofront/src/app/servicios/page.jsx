@@ -36,13 +36,9 @@ export default function Servicios() {
     <>
       <Banner />
 
-      <h1
-        style={{
-          color: "black",
-        }}
-      >
-        Servicios
-      </h1>
+      <div className="serviciosFirst">
+        <h1 className="servicios2">Servicios </h1>
+      </div>
 
       <Grid
         container

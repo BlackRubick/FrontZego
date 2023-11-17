@@ -18,7 +18,7 @@ export default function CardGeneration() {
     },
     
   ];
-
+  
   return (
     <>
       <CardsR aux={CardL} />
