@@ -111,3 +111,64 @@ span{
     height: 350px;
     position: relative;
 }
+
+
+
+
+.containerLogin{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #D6D6D6;
+    justify-content: center;
+    width: 80%;
+    margin: 20px;
+    height: 850px;
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    .containerLogin{
+        flex-direction: row;
+        width: 70%;
+        height: 500px;
+        align-content: center;
+    }
+}
+
+.containerImgLogin {
+    
+    background-color: rgba(0, 0, 0, .5);
+
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.padreImg{
+    background-image: url(../public/zegoLogin.jpg);
+    background-size: cover;
+    height: 450px;
+    width: 400px;
+}
+
+
+.containerFormLogin {
+     background-color: #313931;
+     height: 400px;
+     width: 350px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     text-align: center;
+     gap: 20px;
+}
+
+
+@media (min-width: 768px) {
+    .containerFormLogin{
+        margin-top: 25px;
+        margin-left: 2px;
+    }
+}
