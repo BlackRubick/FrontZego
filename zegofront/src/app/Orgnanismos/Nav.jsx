@@ -27,16 +27,24 @@ const pages = [
   },
   {
     nombrePage: "Galeria",
-    href: "../form",
+    href: "../galeria",
   },
   {
     nombrePage: "Contactanos",
-    href: "../Ejemplares",
+    href: "../contactanos",
   },
   {
-    nombrePage: "Opcion5",
-    href: "../Ejemplar",
+    nombrePage: "Clientes",
+    href: "../clientes",
   },
+  {
+    nombrePage: "Reportes",
+    href: "../reportes",
+  },{
+    nombrePage: "Descargar",
+    href: "../reportesdesc",
+
+  }
 ];
 const settings = ["Perfil", "Cerrar sesión"];
 
@@ -60,7 +68,7 @@ function Nav() {
   };
 
   return (
-    <AppBar position="static" style={{ background: "#313931" }}>
+    <AppBar position="static" style={{ background: "#10754A" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Grid container spacing={2}>

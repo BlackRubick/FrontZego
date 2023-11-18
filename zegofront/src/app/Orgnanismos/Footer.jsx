@@ -20,7 +20,7 @@ import { Email } from "@mui/icons-material";
 
 export default function Footer() {
   return (
-    <AppBar position="static" style={{ background: "#313931" }}>
+    <AppBar position="static" style={{ background: "#10754A" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Grid container spacing={2}>
@@ -34,25 +34,12 @@ export default function Footer() {
                 }}
               >
                 <Grid container direction={"column"} spacing={0}>
-                  <Grid item>
-                    <h2
-                      style={{
-                        fontSize: "30px",
-                      }}
-                    >
-                      Contactanos
-                    </h2>
-                  </Grid>
+                  <Grid item><h2 className="contxD"> Contactanos</h2></Grid>
 
                   <Grid item>
                     <Grid container direction={"row"} spacing={0}>
-                      <LocalPhoneIcon
-                        sx={{
-                          fontSize: "50px",
-                        }}
-                      ></LocalPhoneIcon>
 
-                      <h2>+52 96116681124</h2>
+                      <h2 className="num"><LocalPhoneIcon className="phonexD"></LocalPhoneIcon>      +52   96116681124</h2>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -65,7 +52,7 @@ export default function Footer() {
                   textAlign: "center",
                 }}
               >
-                <h2>ZEGO S.A DE C.V</h2>
+                <h2 className="titulo" >ZEGO S.A DE C.V</h2>
               </div>
             </Grid>
 
@@ -87,8 +74,8 @@ export default function Footer() {
                         alignItems: "center",
                       }}
                     >
-                      <FacebookIcon></FacebookIcon>
-                      <h2>Zego Fumigaciones</h2>
+
+                      <h2 className="footer2xD" ><FacebookIcon></FacebookIcon>Zego Fumigaciones</h2>
                     </Grid>
                   </Grid>
 
@@ -101,8 +88,8 @@ export default function Footer() {
                         alignItems: "center",
                       }}
                     >
-                      <Email></Email>
-                      <h2>ZegoFumigaciones@Gmail.com</h2>
+                      
+                      <h2 className="footer3xD"><Email  ></Email> ZegoFumigaciones@Gmail.com</h2>
                     </Grid>
                   </Grid>
                 </Grid>
