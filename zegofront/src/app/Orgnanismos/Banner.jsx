@@ -1,5 +1,7 @@
-import React from 'react'
-import "../../../css/globals.css"
+import React from 'react';
+import "../Orgnanismos/organismos.css";
+
+
 
 export default function Banner() {
   return (
@@ -10,7 +12,10 @@ export default function Banner() {
     }}
   >
     <div class="Contenido-Hero">
-      <h1>ZEGO</h1>
+      <h1 style={{
+        color:"white",
+        fontSize:"65px"
+      }}>ZEGO</h1>
       <span>Fumigaciones Profesionales</span>
       <div class="Ubicacion">
         <p>

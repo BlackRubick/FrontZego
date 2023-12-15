@@ -29,8 +29,10 @@ export default function Footer() {
                 style={{
                   display: "flex",
                   justifyContent: "center",
-                  alignItems: "center",
+                  alignItems: "flex-start",
                   marginTop: "15px",
+                  alignContent:"flex-start",
+                
                 }}
               >
                 <Grid container direction={"column"} spacing={0}>
@@ -60,12 +62,14 @@ export default function Footer() {
               <div
                 style={{
                   display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center"
+                  justifyContent: "flex-end",
                 }}
               >
-                <Grid container direction={"column"} spacing={0}>
-                  <Grid item>
+                <Grid container direction={"column"} spacing={0} style={{
+                  alignItems:"flex-end",
+                  alignContent:"flex-end"
+                }}>
+                  <Grid item xs={6} lg={6}>
                     <Grid
                       container
                       direction={"row"}
@@ -75,21 +79,20 @@ export default function Footer() {
                       }}
                     >
 
-                      <h2 className="footer2xD" ><FacebookIcon></FacebookIcon>Zego Fumigaciones</h2>
+                      <h2 ><FacebookIcon></FacebookIcon>Zego Fumigaciones</h2>
                     </Grid>
                   </Grid>
 
-                  <Grid item>
+                  <Grid item xs={6} lg={6}>
                     <Grid
                       container
                       direction={"row"}
                       style={{
-                        display: "flex",
-                        alignItems: "center",
+                        display: "flex"
                       }}
                     >
                       
-                      <h2 className="footer3xD"><Email  ></Email> ZegoFumigaciones@Gmail.com</h2>
+                      <h2><Email  ></Email> ZegoFumigaciones@Gmail.com</h2>
                     </Grid>
                   </Grid>
                 </Grid>

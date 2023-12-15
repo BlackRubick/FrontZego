@@ -1,40 +1,45 @@
 import React from "react";
 import "../../css/globals.css";
-import CardsR from "./Moleculas/CardsR";
-import CardsL from "./Moleculas/CardsL";
+import Cards from "./Moleculas/Cards";
 import Banner from "./Orgnanismos/Banner";
 import { Grid } from "@mui/material";
 
 export default function Home() {
-  const CardMisionL = [
+  const CardsA = [
     {
       tituloCard: "Mision",
       contenidoCard:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut maximus blandit nisi id consequat. Etiam est libero, aliquam quis molestie id, vehicula quis justo. In sit amet massa non lorem facilisis egestas.",
       styleCard: "Card1",
+      orderStyle1:"orderStyleL1",
+      orderStyle2:"orderStyleL2"
     },
-  ];
-  const CardVisionR = [
-    {
+   {
       tituloCard: "Vision",
       contenidoCard:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut maximus blandit nisi id consequat. Etiam est libero, aliquam quis molestie id, vehicula quis justo. In sit amet massa non lorem facilisis egestas.",
       styleCard: "Card1",
+      orderStyle1:"orderStyleR1",
+      orderStyle2:"orderStyleR2"
     },
+    
   ];
 
-  const CardValoresL = [
+  const CardsB = [
     {
       tituloCard: "Valores",
       contenidoCard:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut maximus blandit nisi id consequat. Etiam est libero, aliquam quis molestie id, vehicula quis justo. In sit amet massa non lorem facilisis egestas.",
       styleCard: "Card1",
+      orderStyle1:"orderStyleR1",
+      orderStyle2:"orderStyleR2"
     },
-  ];
 
+    
+  ];
   return (
     <>
-      <Banner/>
+      <Banner />
       <Grid
         container
         spacing={0}
@@ -43,20 +48,11 @@ export default function Home() {
         }}
       >
         <div className="CardsContainer">
-          <div>
-          <CardsR aux={CardMisionL} />
+          <Cards aux={CardsA} />
+          <Cards aux={CardsB} />
 
-          </div>
-          <div>
-          <CardsL aux={CardVisionR} />
-
-          </div>
-          <div>
-          <CardsR aux={CardValoresL} />
-
-          </div>
         </div>
       </Grid>
-    </>
+    </> 
   );
 }
