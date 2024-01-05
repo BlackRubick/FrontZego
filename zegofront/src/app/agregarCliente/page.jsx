@@ -53,29 +53,26 @@ export default function agregarCliente() {
       onSubmit={async (values) => {
         try {
           console.log(values);
-          const token = Cookies.get("token");
-          const breedingPlace = Cookies.get("breedingPlace");
-
+          //token
           axios
-            .post("http://localhost:8080/animal/postAnimal", {
-              specie: 1,
-              birthday: values.birthday,
-              breedingPlace: 1,
-              gender: values.gender,
+            .post("http://localhost:8080/", {
               name: values.name,
-              registerNumber: values.registerNumber,
-              description: values.description,
-              token: token,
+              nameSucursal: values.nameSucursal,
+              mail: values.mail,
+              password: values.password,
+              direccionSucursal: values.direccionSucursal,
+              giroDeEmpresa: values.giroDeEmpresa,
+              region: values.region,
+              token: token,//token
             })
             .then((response) => {
               console.log(response);
-              alert("creado");
-              window.location.href = "http://localhost:3000/Ejemplares";
+              alert("Cliente Creado");
+              window.location.href = "http://localhost:3000/clientes";
 
             });
         } catch (error) {
           console.error(error);
-          alert("Agrega una imagen");
         }
       }}
       >

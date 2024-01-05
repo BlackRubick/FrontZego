@@ -14,7 +14,7 @@ import {
   TextField,
 } from "@mui/material";
 
-export default function Reportes() {
+export default function ReportesDesc() {
   const ColorButton = styled(Button)(({ theme }) => ({
     color: "white",
     backgroundColor: "#10754a",
@@ -136,35 +136,21 @@ export default function Reportes() {
                     </Box>
                   </Grid>
                   <Grid item xs={12} lg={4}>
-                    <Grid container spacing={0} direction={"row"}>
-                      <Grid item xs={6} lg={3}>
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/117/117885.png"
-                          alt="agregar"
-                          className="add"
-                          onClick={() => {
-                            window.location.href = "./agregarLicenciaSanitaria";
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={6} lg={3}>
-                        <img
-                          src="https://cdn.icon-icons.com/icons2/931/PNG/512/edit_modify_icon-icons.com_72390.png"
-                          alt="imagen"
-                          className="download"
-                          onClick={() => {
-                            window.location.href = "./editarLicenciaSanitaria";
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={6} lg={3}>
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png"
-                          alt="imagen"
-                          className="add"
-                        />
-                      </Grid>
-                      <Grid item xs={6} lg={3}>
+                    <Grid
+                      container
+                      spacing={0}
+                      direction={"row"}
+                      display={"flex"}
+                      justifyContent={"center"}
+                    >
+                      <Grid item xs={0} lg={9}></Grid>
+                      <Grid
+                        item
+                        xs={12}
+                        lg={3}
+                        display={"flex"}
+                        justifyContent={"center"}
+                      >
                         <img
                           src="https://static.vecteezy.com/system/resources/previews/000/574/204/original/vector-sign-of-download-icon.jpg"
                           alt="imagen"
@@ -176,6 +162,7 @@ export default function Reportes() {
                 </Grid>
               </div>
             </Grid>
+
             <Grid
               item
               xs={12}
@@ -229,35 +216,21 @@ export default function Reportes() {
                     </Box>
                   </Grid>
                   <Grid item xs={12} lg={4}>
-                    <Grid container spacing={0} direction={"row"}>
-                      <Grid item xs={6} lg={3}>
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/117/117885.png"
-                          alt="agregar"
-                          className="add"
-                          onClick={() => {
-                            window.location.href = "./agregarLicenciaSanitaria";
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={6} lg={3}>
-                        <img
-                          src="https://cdn.icon-icons.com/icons2/931/PNG/512/edit_modify_icon-icons.com_72390.png"
-                          alt="imagen"
-                          className="download"
-                          onClick={() => {
-                            window.location.href = "./editarLicenciaSanitaria";
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={6} lg={3}>
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png"
-                          alt="imagen"
-                          className="add"
-                        />
-                      </Grid>
-                      <Grid item xs={6} lg={3}>
+                    <Grid
+                      container
+                      spacing={0}
+                      direction={"row"}
+                      display={"flex"}
+                      justifyContent={"center"}
+                    >
+                      <Grid item xs={12} lg={9}></Grid>
+                      <Grid
+                        item
+                        xs={12}
+                        lg={3}
+                        display={"flex"}
+                        justifyContent={"center"}
+                      >
                         <img
                           src="https://static.vecteezy.com/system/resources/previews/000/574/204/original/vector-sign-of-download-icon.jpg"
                           alt="imagen"
@@ -291,7 +264,7 @@ export default function Reportes() {
                           textAlign: "center",
                         }}
                       >
-                        Reporte De Inspeccion a Nivel Piso
+                        Reporte de Inspección a Nivel De Piso
                       </h1>
                     </div>
                   </Grid>
@@ -322,35 +295,21 @@ export default function Reportes() {
                     </Box>
                   </Grid>
                   <Grid item xs={12} lg={4}>
-                    <Grid container spacing={0} direction={"row"}>
-                      <Grid item xs={6} lg={3}>
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/117/117885.png"
-                          alt="agregar"
-                          className="add"
-                          onClick={() => {
-                            window.location.href = "./agregarLicenciaSanitaria";
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={6} lg={3}>
-                        <img
-                          src="https://cdn.icon-icons.com/icons2/931/PNG/512/edit_modify_icon-icons.com_72390.png"
-                          alt="imagen"
-                          className="download"
-                          onClick={() => {
-                            window.location.href = "./editarLicenciaSanitaria";
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={6} lg={3}>
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png"
-                          alt="imagen"
-                          className="add"
-                        />
-                      </Grid>
-                      <Grid item xs={6} lg={3}>
+                    <Grid
+                      container
+                      spacing={0}
+                      direction={"row"}
+                      display={"flex"}
+                      justifyContent={"center"}
+                    >
+                      <Grid item xs={12} lg={9}></Grid>
+                      <Grid
+                        item
+                        xs={12}
+                        lg={3}
+                        display={"flex"}
+                        justifyContent={"center"}
+                      >
                         <img
                           src="https://static.vecteezy.com/system/resources/previews/000/574/204/original/vector-sign-of-download-icon.jpg"
                           alt="imagen"
@@ -384,7 +343,7 @@ export default function Reportes() {
                           textAlign: "center",
                         }}
                       >
-                        Reporte De Revision de Trampas de Luz
+                        Reporte De Revision de Trampas de Luz{" "}
                       </h1>
                     </div>
                   </Grid>
@@ -415,35 +374,21 @@ export default function Reportes() {
                     </Box>
                   </Grid>
                   <Grid item xs={12} lg={4}>
-                    <Grid container spacing={0} direction={"row"}>
-                      <Grid item xs={6} lg={3}>
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/117/117885.png"
-                          alt="agregar"
-                          className="add"
-                          onClick={() => {
-                            window.location.href = "./agregarLicenciaSanitaria";
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={6} lg={3}>
-                        <img
-                          src="https://cdn.icon-icons.com/icons2/931/PNG/512/edit_modify_icon-icons.com_72390.png"
-                          alt="imagen"
-                          className="download"
-                          onClick={() => {
-                            window.location.href = "./editarLicenciaSanitaria";
-                          }}
-                        />
-                      </Grid>
-                      <Grid item xs={6} lg={3}>
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png"
-                          alt="imagen"
-                          className="add"
-                        />
-                      </Grid>
-                      <Grid item xs={6} lg={3}>
+                    <Grid
+                      container
+                      spacing={0}
+                      direction={"row"}
+                      display={"flex"}
+                      justifyContent={"center"}
+                    >
+                      <Grid item xs={12} lg={9}></Grid>
+                      <Grid
+                        item
+                        xs={12}
+                        lg={3}
+                        display={"flex"}
+                        justifyContent={"center"}
+                      >
                         <img
                           src="https://static.vecteezy.com/system/resources/previews/000/574/204/original/vector-sign-of-download-icon.jpg"
                           alt="imagen"

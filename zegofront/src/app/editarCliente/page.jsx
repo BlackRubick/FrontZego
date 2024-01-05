@@ -283,7 +283,7 @@ export default function editarCliente() {
                   <Box>
                     <Stack spacing={2} direction="row">
                       <ColorButton type="submit" variant="contained" fullWidth>
-                        AGREGAR
+                        Editar
                       </ColorButton>
                     </Stack>
                   </Box>
