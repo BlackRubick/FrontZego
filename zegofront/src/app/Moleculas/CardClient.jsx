@@ -46,7 +46,7 @@ export default function Cardclient({ c }) {
                 window.location.href="./reportes"
               }}
             >
-              <img alt="complex" src="../../../public/coca.png" />
+              <img className="animalito" alt="complex" src="http://1.bp.blogspot.com/-FJPLSHI4cVY/T0Kt3koo-gI/AAAAAAABLRU/yelxxfmKiSY/s1600/Coca_Cola_Logo1.jpg" />
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>

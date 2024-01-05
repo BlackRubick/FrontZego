@@ -2,17 +2,18 @@
 import React, { useState } from "react";
 import "../../../css/globals.css";
 import Cardclient from "../Moleculas/CardClient";
-import { Button, Grid, Box, Autocomplete, TextField } from "@mui/material";
+import { Button, Grid, Box, Autocomplete, TextField, styled, Stack } from "@mui/material";
 
 export default function Clientes() {
-  const region = ["Todas", "Tuxtla", "Comitan", "Comalapa"];
-  const giroDeEmpresa = ["Cadena", "Farmacias", "Carnicerias", "Gobierno"];
+  const region = ["Todas", "Tuxtla", "Comitan", "Comalapa"]; //aqui se van a consumir las regiones que dejemos por default
+  const giroDeEmpresa = ["Cadena", "Farmacias", "Carnicerias", "Gobierno"]; //aqui se van a consumir los tipos de empresasa que dejemos
   const nombreDeEmpresa = ["CocaCola", "Farmacia Santa Cruz", "Carniceria"];
 
   const [regionValue, setRegionValue] = useState([]);
   const [giroDeEmpresaValue, setgiroDeEmpresaValue] = useState([]);
   const [nombreDeEmpresaValue, setNombreDeEmpresaValue] = useState([]);
 
+  //ejemplo de arreglo para consumir clientes
   const clientes = [
     {
       nombreEmpresa: "Coca",
@@ -61,9 +62,15 @@ export default function Clientes() {
     },
   ];
 
+  //Use effect para renderizado condicional
 
-
-  //Use effect para renderizado condicional 
+  const ColorButton = styled(Button)(({ theme }) => ({
+    color: "black",
+    backgroundColor: "#10754a",
+    "&:hover": {
+      backgroundColor: "#D6D6D6",
+    },
+  }));
 
   return (
     <>
@@ -81,9 +88,7 @@ export default function Clientes() {
             alignContent={"flex-start"}
           >
             <Grid item xs={12} lg={12} display="flex" justifyContent={"center"}>
-              <h1 >
-                Clientes
-              </h1>
+              <h1>Clientes</h1>
             </Grid>
             <Grid
               item
@@ -211,9 +216,18 @@ export default function Clientes() {
         </div>
       </div>
       <div className="clientes-herramientas">
-        <Button variant="contained" onClick={()=>{
-          window.location.href="./agregarCliente"
-        }}>AGREGAR</Button>
+        <Stack spacing={2} direction="row">
+          <ColorButton
+            type="submit"
+            variant="contained"
+            fullWidth
+            onClick={() => {
+              window.location.href = "./agregarCliente";
+            }}
+          >
+            AGREGAR
+          </ColorButton>
+        </Stack>
       </div>
     </>
   );
