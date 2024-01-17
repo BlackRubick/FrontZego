@@ -1,4 +1,5 @@
 "use client";
+import axios from 'axios';
 import { Grid, TextField, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Stack from "@mui/material/Stack";
@@ -16,7 +17,28 @@ export default function Login() {
     },
   }));
 
+
   const baseUrl = "http://localhost:8080/auth/login";
+
+  const loginUser = async (values, baseUrl) => {
+    try {
+      const response = await axios.post(baseUrl, {
+        email: values.user,
+        password: values.password,
+      });
+
+      const token = response.data.accessToken;
+
+      if (response.data !== "") {
+
+        window.location.href = "http://localhost:3000/login";
+      } else {
+        console.log("Usuario o Contraseña incorrecta");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <>
@@ -26,25 +48,7 @@ export default function Login() {
           password: "",
         }}
         onSubmit={async (values) => {
-          try {
-            axios
-              .post(baseUrl, {
-                email: values.user,
-                password: values.password,
-              })
-              .then((response) => {
-                const token = response.data.accessToken;
-
-                if (response.data != "") {
-                  Cookies.set("token", token);
-                  window.location.href = "http://localhost:3000/";
-                } else {
-                  console.log("Usuario o Contraseña incorrecta");
-                }
-              });
-          } catch (error) {
-            console.error(err);
-          }
+          await loginUser(values, baseUrl);
         }}
       >
         {({ errors, handleBlur, handleChange, handleSubmit, values }) => (
@@ -53,6 +57,7 @@ export default function Login() {
               display: "flex",
               justifyContent: "center",
             }}
+            onSubmit={handleSubmit}
           >
             <div className="containerLogin">
               <div className="padreImg">
@@ -66,18 +71,36 @@ export default function Login() {
                       fontSize: "50px",
                     }}
                   >
-                    Inicia Sesion
+                    Inicia Sesión
                   </h1>
                 </div>
                 <div>
-                  <input type="text" className="Entradas" placeholder="Correo" value={values.user} />
+                  <TextField
+                    type="text"
+                    className="Entradas"
+                    placeholder="Correo"
+                    value={values.user}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    name="user"
+                  />
                 </div>
                 <div>
-                  <input type="text" className="Entradas" placeholder="Contraseña" value={values.password} />
+                  <TextField
+                    type="password"
+                    className="Entradas"
+                    placeholder="Contraseña"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    name="password"
+                  />
                 </div>
                 <div>
                   <Stack spacing={2} direction="row">
-                    <ColorButton variant="contained" type="submit">Ingresar</ColorButton>
+                    <ColorButton variant="contained" type="submit">
+                      Ingresar
+                    </ColorButton>
                   </Stack>
                 </div>
               </div>
@@ -88,3 +111,4 @@ export default function Login() {
     </>
   );
 }
+
