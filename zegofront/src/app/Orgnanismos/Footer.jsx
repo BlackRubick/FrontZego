@@ -1,21 +1,11 @@
 "use client";
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import Enlaces from "../Atomos/Enlaces";
 import { Grid } from "@mui/material";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import EmailIcon from "@mui/icons-material/Email";
 import { Email } from "@mui/icons-material";
 
 export default function Footer() {
@@ -31,17 +21,20 @@ export default function Footer() {
                   justifyContent: "center",
                   alignItems: "flex-start",
                   marginTop: "15px",
-                  alignContent:"flex-start",
-                
+                  alignContent: "flex-start",
                 }}
               >
                 <Grid container direction={"column"} spacing={0}>
-                  <Grid item><h2 className="contxD"> Contactanos</h2></Grid>
+                  <Grid item>
+                    <h2 className="contxD"> Contactanos</h2>
+                  </Grid>
 
                   <Grid item>
                     <Grid container direction={"row"} spacing={0}>
-
-                      <h2 className="num"><LocalPhoneIcon className="phonexD"></LocalPhoneIcon>      +52   96116681124</h2>
+                      <h2 className="num">
+                        <LocalPhoneIcon className="phonexD"></LocalPhoneIcon>{" "}
+                        +52 96116681124
+                      </h2>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -54,7 +47,7 @@ export default function Footer() {
                   textAlign: "center",
                 }}
               >
-                <h2 className="titulo" >ZEGO S.A DE C.V</h2>
+                <h2 className="titulo">ZEGO S.A DE C.V</h2>
               </div>
             </Grid>
 
@@ -65,10 +58,15 @@ export default function Footer() {
                   justifyContent: "flex-end",
                 }}
               >
-                <Grid container direction={"column"} spacing={0} style={{
-                  alignItems:"flex-end",
-                  alignContent:"flex-end"
-                }}>
+                <Grid
+                  container
+                  direction={"column"}
+                  spacing={0}
+                  style={{
+                    alignItems: "flex-end",
+                    alignContent: "flex-end",
+                  }}
+                >
                   <Grid item xs={6} lg={6}>
                     <Grid
                       container
@@ -78,8 +76,9 @@ export default function Footer() {
                         alignItems: "center",
                       }}
                     >
-
-                      <h2 ><FacebookIcon></FacebookIcon>Zego Fumigaciones</h2>
+                      <h2>
+                        <FacebookIcon></FacebookIcon>Zego Fumigaciones
+                      </h2>
                     </Grid>
                   </Grid>
 
@@ -88,11 +87,12 @@ export default function Footer() {
                       container
                       direction={"row"}
                       style={{
-                        display: "flex"
+                        display: "flex",
                       }}
                     >
-                      
-                      <h2><Email  ></Email> ZegoFumigaciones@Gmail.com</h2>
+                      <h2>
+                        <Email></Email> ZegoFumigaciones@Gmail.com
+                      </h2>
                     </Grid>
                   </Grid>
                 </Grid>
