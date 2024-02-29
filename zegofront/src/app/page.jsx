@@ -50,7 +50,6 @@ export default function Home() {
         <div className="CardsContainer">
           <Cards aux={CardsA} />
           <Cards aux={CardsB} />
-
         </div>
       </Grid>
     </> 

@@ -40,17 +40,20 @@ const pages = [
   {
     nombrePage: "Reportes",
     href: "../reportes",
-  },{
+  },
+  {
     nombrePage: "Descargar",
-    href: "../reportesdesc",
-
-  }
+    href: "../reportesdescarga",
+  },
 ];
-const settings = ["Perfil", "Cerrar sesión"];
+const settings = ["Perfil", "Cerrar sesión,"];
 
 function Nav() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const handleNav = async () => {
+    window.location.href = "./agregarCliente";
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -104,12 +107,11 @@ function Nav() {
             </Grid>
 
             <Grid item xs={12} lg={10}>
-             
-                <Grid Container spacing={2} className="nav">
-                  {pages.map((page) => (
-                    <Enlaces {...page} />
-                  ))}
-                </Grid>
+              <Grid Container spacing={2} className="nav">
+                {pages.map((page) => (
+                  <Enlaces {...page} />
+                ))}
+              </Grid>
             </Grid>
 
             <Grid item xs={12} lg={1}>
@@ -147,14 +149,37 @@ function Nav() {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                   >
-                    {settings.map((setting) => (
-                      <MenuItem
-                        // key={setting}
-                        onClick={handleCloseUserMenu}
+                    <MenuItem
+                      // key={setting}
+                      onClick={handleCloseUserMenu}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems:"flex-start"
+                        }}
                       >
-                        <Typography textAlign="center">{setting}</Typography>
-                      </MenuItem>
-                    ))}
+                        <Button
+                          variant="body2"
+                          style={{
+                            color: "red",
+                          }}
+                          onClick={handleNav}
+                        >
+                          Cerrar Sesion
+                        </Button>
+                        <Button variant="body2" onClick={handleNav}>
+                          Agregar Empleado
+                        </Button>
+                        <Button variant="body2" onClick={handleNav}>
+                          Eliminar Empleado
+                        </Button>
+                        <Button variant="body2" onClick={handleNav}>
+                          Editar Empleado
+                        </Button>
+                      </div>
+                    </MenuItem>
                   </Menu>
                 </Box>
               </div>
@@ -166,4 +191,3 @@ function Nav() {
   );
 }
 export default Nav;
-

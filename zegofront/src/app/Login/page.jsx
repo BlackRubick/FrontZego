@@ -6,8 +6,11 @@ import Stack from "@mui/material/Stack";
 import React from "react";
 import "../../../css/globals.css";
 import { Formik } from "formik";
+import { useGet } from '@/hooks/useGet';
 
 export default function Login() {
+
+  const {data} = useGet("htpp://localhost:3000/movies")
   const ColorButton = styled(Button)(({ theme }) => ({
     color: "black",
     backgroundColor: "white",
@@ -21,6 +24,7 @@ export default function Login() {
   const baseUrl = "http://localhost:8080/auth/login";
 
   const loginUser = async (values, baseUrl) => {
+    
     try {
       const response = await axios.post(baseUrl, {
         email: values.user,
@@ -40,7 +44,7 @@ export default function Login() {
     }
   };
 
-  return (
+  return (  
     <>
       <Formik
         initialValues={{
