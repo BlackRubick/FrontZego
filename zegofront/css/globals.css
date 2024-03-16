@@ -336,6 +336,7 @@ input[type="file"]::file-selector-button:hover {
   }
 }
 
+
 .clientes-herramientas {
   width: 10%;
   margin: 10px;
@@ -396,3 +397,7 @@ input[type="file"]::file-selector-button:hover {
   height: 134px;
   border-radius: 100px;
   }
+
+.formLabel span{
+  color: #000;
+}

@@ -4,26 +4,7 @@ import { TextField, Button, styled, Stack, Grid, Box } from "@mui/material";
 import { PDFDocument, StandardFonts, values } from "pdf-lib";
 
 import "../../../css/globals.css";
-
-export default function agregarOrdenDeServicio() {
-  const [generatedPdf, setGeneratedPdf] = useState(null);
-  const nombre2 = "Farmacia Super Santa Cruz ";
-  const firmaDelCliente = "Jorge Emanuel";
-  const direccionDelCliente = "2av Sur Ote";
-  const evaluacionDelServicio = "x";
-  const noContrato = "212108";
-  const noTelefono = "9611245569";
-  const loteCaducidad= "loteCaducidad";
-  const claveDeProducto= "claveDeProduc";
-  const plagasAControlar = "plagasACont";
-  const AreasTratadas= "AreasTratadas";
-  const metodoUtilizado= "metodoUtiliz";
-  const equipoUtilizado= "equipoUtiliz";
-  const Dosis= "Dosis";
-  const mezclaPreparada= "mezclaPrepar";
-  const AreaTratada= "AreaTrata";
-
-  const [tipoDeServicio, setTipoDeServicio] = useState("");
+export default function agregarRepNIvelPiso() {
 
   const ColorButton = styled(Button)(({ theme }) => ({
     color: "black",
@@ -33,9 +14,16 @@ export default function agregarOrdenDeServicio() {
     },
   }));
 
+
+  const [generatedPdf, setGeneratedPdf] = useState(null);
+  const [tipoDeServicio, setTipoDeServicio] = useState("");
+
   const handleSubmit = async (event) => {
     console.log(nombre2, firmaDelCliente, tipoDeServicio);
   };
+  
+
+  
 
   const handlePdf = async (event) => {
     try {
@@ -55,269 +43,6 @@ export default function agregarOrdenDeServicio() {
       firstPage.drawText(nombre2, {
         x: 120,
         y: 524,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(firmaDelCliente, {
-        x: 475,
-        y: 524,
-        size: 8,
-        font: helveticaFont,
-      });
-      //fila 2
-      firstPage.drawText(direccionDelCliente, {
-        x: 145,
-        y: 517,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 395,
-        y: 518,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 424,
-        y: 518,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 453,
-        y: 518,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 482,
-        y: 518,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 511,
-        y: 518,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 540,
-        y: 518,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 569,
-        y: 518,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 569,
-        y: 518,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 598,
-        y: 518,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 627,
-        y: 518,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 656,
-        y: 518,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 685,
-        y: 518,
-        size: 8,
-        font: helveticaFont,
-      });
-      //fila 3
-      firstPage.drawText(noContrato, {
-        x: 145,
-        y: 510,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(noTelefono, {
-        x: 270,
-        y: 510,
-        size: 8,
-        font: helveticaFont,
-      });
-
-      //fila4
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 157,
-        y: 504,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 192,
-        y: 504,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 221,
-        y: 504,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 250,
-        y: 504,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 279,
-        y: 504,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 351,
-        y: 504,
-        size: 8,
-        font: helveticaFont,
-      });
-      //fila 5  
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 157,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 192,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 221,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 250,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 279,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 308,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 337,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 366,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 395,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      // fila 6
-     
-      firstPage.drawText(loteCaducidad, {
-        x: 296,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(claveDeProducto, {
-        x: 354,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(plagasAControlar, {
-        x: 412,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(AreasTratadas, {
-        x: 470,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(metodoUtilizado, {
-        x: 528,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(equipoUtilizado, {
-        x: 557,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(Dosis, {
-        x: 586,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(mezclaPreparada, {
-        x: 615,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(AreaTratada, {
-        x: 644,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-
-      //fila 7
-      firstPage.drawText(loteCaducidad, {
-        x: 296,
-        y: 429,
-        size: 8,
-        font: helveticaFont,
-      });
-      //fila 8
-
-      firstPage.drawText(loteCaducidad, {
-        x: 80,
-        y: 270,
         size: 8,
         font: helveticaFont,
       });
