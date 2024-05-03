@@ -255,7 +255,7 @@ export default function agregarOrdenSencilla() {
           size: 10,
           font: helveticaFont,
         });
-      } else {
+      } else if (!trampasDeGoma) {
         firstPage.drawText("X", {
           x: 143,
           y: 450,
@@ -264,14 +264,14 @@ export default function agregarOrdenSencilla() {
         });
       }
 
-      if (trampasMecanicas) {
+      if (cebadero) { //esta seteando la x en 'cebadero' en vez de 'trampas mecanicas'
         firstPage.drawText("X", {
           x: 243,
           y: 450,
           size: 10,
           font: helveticaFont,
         });
-      } else {
+      } else if (!cebadero) {
         firstPage.drawText("X", {
           x: 266,
           y: 450,
@@ -281,76 +281,77 @@ export default function agregarOrdenSencilla() {
       }
 
       //fila 2
-      if (trampasDeJaula) {
+      if (trampasMecanicas) {
         firstPage.drawText("X", {
           x: 120,
           y: 418,
           size: 10,
           font: helveticaFont,
         });
-      } else {
+      } else if (!trampasMecanicas) {
         firstPage.drawText("X", {
           x: 143,
           y: 418,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
+
+      if (expulsores) {
+        firstPage.drawText("X", {
+          x: 243,
+          y: 418,
+          size: 10,
+          font: helveticaFont,
+        });
+      } else if (!expulsores) {
+        firstPage.drawText("X", {
+          x: 266,
+          y: 418,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
+
+      if (trampasDeJaula) {
+        firstPage.drawText("X", {
+          x: 120,
+          y: 384,
+          size: 10,
+          font: helveticaFont,
+        });
+      } else if (!trampasDeJaula) {
+        firstPage.drawText("X", {
+          x: 143,
+          y: 384,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
+
+      if (aspersion) {
+        firstPage.drawText("X", {
+          x: 243,
+          y: 384,
+          size: 10,
+          font: helveticaFont,
+        });
+      } else if (!aspersion) {
+        firstPage.drawText("X", {
+          x: 266,
+          y: 384,
           size: 10,
           font: helveticaFont,
         });
       }
       if (aplicacionDeGel) {
         firstPage.drawText("X", {
-          x: 243,
-          y: 418,
-          size: 10,
-          font: helveticaFont,
-        });
-      } else {
-        firstPage.drawText("X", {
-          x: 266,
-          y: 418,
-          size: 10,
-          font: helveticaFont,
-        });
-      }
-
-      if (cucaraHormiguicida) {
-        firstPage.drawText("X", {
-          x: 120,
-          y: 384,
-          size: 10,
-          font: helveticaFont,
-        });
-      } else {
-        firstPage.drawText("X", {
-          x: 143,
-          y: 384,
-          size: 10,
-          font: helveticaFont,
-        });
-      }
-
-      if (cebadero) {
-        firstPage.drawText("X", {
-          x: 243,
-          y: 384,
-          size: 10,
-          font: helveticaFont,
-        });
-      } else {
-        firstPage.drawText("X", {
-          x: 266,
-          y: 384,
-          size: 10,
-          font: helveticaFont,
-        });
-      }
-      if (expulsores) {
-        firstPage.drawText("X", {
           x: 120,
           y: 353,
           size: 10,
           font: helveticaFont,
         });
-      } else {
+      } else if (!aplicacionDeGel) {
         firstPage.drawText("X", {
           x: 143,
           y: 353,
@@ -358,14 +359,14 @@ export default function agregarOrdenSencilla() {
           font: helveticaFont,
         });
       }
-      if (aspersion) {
+      if (termoNebulizacion) {
         firstPage.drawText("X", {
           x: 243,
           y: 353,
           size: 10,
           font: helveticaFont,
         });
-      } else {
+      } else  if (!termoNebulizacion) {
         firstPage.drawText("X", {
           x: 266,
           y: 353,
@@ -376,14 +377,14 @@ export default function agregarOrdenSencilla() {
 
       //fil4
 
-      if (termoNebulizacion) {
+      if (cucaraHormiguicida) {
         firstPage.drawText("X", {
           x: 120,
           y: 318,
           size: 10,
           font: helveticaFont,
         });
-      } else {
+      } else if (!cucaraHormiguicida) {
         firstPage.drawText("X", {
           x: 143,
           y: 318,
@@ -399,7 +400,7 @@ export default function agregarOrdenSencilla() {
           size: 10,
           font: helveticaFont,
         });
-      } else {
+      } else if (!nebulizacionEnFrio) {
         firstPage.drawText("X", {
           x: 266,
           y: 318,
@@ -425,7 +426,7 @@ export default function agregarOrdenSencilla() {
           font: helveticaFont,
         });
       }
-      if (arañas) {
+      if (garrapatas) {
         firstPage.drawText("X", {
           x: 561,
           y: 462,
@@ -433,42 +434,26 @@ export default function agregarOrdenSencilla() {
           font: helveticaFont,
         });
       }
-      if (chinches) {
+      if (arañas) {
         firstPage.drawText("X", {
           x: 430,
           y: 420,
-          size: 10,
-          font: helveticaFont,
-        });
-      }
-      if (hormigas) {
-        firstPage.drawText("X", {
-          x: 561,
-          y: 420,
-          size: 10,
-          font: helveticaFont,
-        });
-      }
-      if (moscas) {
-        firstPage.drawText("X", {
-          x: 430,
-          y: 378,
-          size: 10,
-          font: helveticaFont,
-        });
-      }
-      if (garrapatas) {
-        firstPage.drawText("X", {
-          x: 561,
-          y: 378,
           size: 10,
           font: helveticaFont,
         });
       }
       if (alacranes) {
         firstPage.drawText("X", {
+          x: 561,
+          y: 420,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
+      if (chinches) {
+        firstPage.drawText("X", {
           x: 430,
-          y: 336,
+          y: 378,
           size: 10,
           font: helveticaFont,
         });
@@ -476,12 +461,28 @@ export default function agregarOrdenSencilla() {
       if (termitas) {
         firstPage.drawText("X", {
           x: 561,
+          y: 378,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
+      if (hormigas) {
+        firstPage.drawText("X", {
+          x: 430,
           y: 336,
           size: 10,
           font: helveticaFont,
         });
       }
       if (roedores) {
+        firstPage.drawText("X", {
+          x: 561,
+          y: 336,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
+      if (moscas) {
         firstPage.drawText("X", {
           x: 430,
           y: 294,
@@ -860,6 +861,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setTrampasDeGoma(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -870,7 +874,7 @@ export default function agregarOrdenSencilla() {
                     <Grid item xs={12} lg={3}>
                       <FormControl className="formLabel">
                         <FormLabel id="demo-row-radio-buttons-group-label">
-                          Trampas De Goma
+                          Trampas Mecánicas
                         </FormLabel>
                         <RadioGroup
                           row
@@ -887,6 +891,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setTrampasMecanicas(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -914,6 +921,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setTrampasDeJaula(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -942,6 +952,9 @@ export default function agregarOrdenSencilla() {
                           <FormControlLabel
                             value="No"
                             control={<Radio />}
+                            onChange={() => {
+                              setAplicacionDeGel(false);
+                            }}
                             label="No"
                           />
                         </RadioGroup>
@@ -968,6 +981,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setCucaraHormiguicida(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -993,6 +1009,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setCebadero(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1020,6 +1039,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setExpulsores(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1047,6 +1069,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setAspersion(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1074,6 +1099,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setTermoNebulizacion(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1101,6 +1129,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setNebulizacionEnFrio(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1127,6 +1158,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setCucarachas(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1152,6 +1186,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setArañas(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1177,6 +1214,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setChinches(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1202,6 +1242,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setHormigas(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1227,6 +1270,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setMoscas(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1252,6 +1298,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setGarrapatas(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1277,6 +1326,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setAlacranes(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1302,6 +1354,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setTermitas(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
@@ -1327,6 +1382,9 @@ export default function agregarOrdenSencilla() {
                           />
                           <FormControlLabel
                             value="No"
+                            onChange={() => {
+                              setRoedores(false);
+                            }}
                             control={<Radio />}
                             label="No"
                           />
