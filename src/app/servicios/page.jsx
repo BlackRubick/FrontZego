@@ -8,7 +8,7 @@ export default function Servicios() {
     {
       tituloCard: "Fumigaciones",
       contenidoCard:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut maximus blandit nisi id consequat. Etiam est libero, aliquam quis molestie id, vehicula quis justo. In sit amet massa non lorem facilisis egestas.",
+        "Las fumigaciones son un servicio vital en la protección y mantenimiento de hogares, negocios y espacios públicos contra plagas de insectos, roedores y otros organismos no deseados. Una empresa de fumigaciones se especializa en la aplicación controlada de pesticidas y otros agentes químicos para eliminar y prevenir la proliferación de plagas, lo que ayuda a salvaguardar la salud pública, proteger la propiedad y preservar el medio ambiente.",
       styleCard: "Card1",
       orderStyle1:"orderStyleL1",
       orderStyle2:"orderStyleL2"
@@ -16,7 +16,7 @@ export default function Servicios() {
    {
       tituloCard: "Control De Plagas",
       contenidoCard:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut maximus blandit nisi id consequat. Etiam est libero, aliquam quis molestie id, vehicula quis justo. In sit amet massa non lorem facilisis egestas.",
+      "El control de plagas es un servicio esencial para mantener la salud y la seguridad en hogares, negocios y entornos públicos alrededor del mundo. Una empresa de control de plagas se especializa en la identificación, prevención y eliminación de infestaciones de insectos, roedores, aves y otros organismos perjudiciales que pueden representar una amenaza para la salud humana, la propiedad y el medio ambiente.",
       styleCard: "Card1",
       orderStyle1:"orderStyleR1",
       orderStyle2:"orderStyleR2"
@@ -28,7 +28,7 @@ export default function Servicios() {
     {
       tituloCard: "Productos y Personal de Limpieza",
       contenidoCard:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut maximus blandit nisi id consequat. Etiam est libero, aliquam quis molestie id, vehicula quis justo. In sit amet massa non lorem facilisis egestas.",
+      "Zego cuenta con una selección de productos de limpieza especializados diseñados para complementar sus servicios de control de plagas y fumigaciones. Esto incluiría desinfectantes, detergentes, desodorantes y otros productos químicos para limpiar y desinfectar áreas afectadas por plagas, así como para prevenir futuras infestaciones.",
       styleCard: "Card1",
       orderStyle1:"orderStyleR1",
       orderStyle2:"orderStyleR2"
