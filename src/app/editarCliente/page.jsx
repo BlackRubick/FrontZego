@@ -15,9 +15,9 @@ import {
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputLabel from "@mui/material/InputLabel";
-import axios from "axios"; // Importa axios para realizar solicitudes HTTP
+import axios from "axios"; 
 
-export default function AgregarCliente() {
+export default function EditarCliente({ clienteId }) {
   const ColorButton = styled(Button)(({ theme }) => ({
     color: "black",
     backgroundColor: "#10754a",
@@ -50,9 +50,10 @@ export default function AgregarCliente() {
       setRegionValue("");
     }
   };
+
   const handleSubmit = async () => {
     try {
-      const response = await axios.put(`http://localhost:5000/editar-cliente/${cliente.id}`, {
+      const response = await axios.put(`http://localhost:5000/editar-cliente/${clienteId}`, {
         nombre_cliente: name,
         nombre_sucursal: nameSucursal,
         // Añade aquí todas las propiedades que quieras actualizar
@@ -66,6 +67,7 @@ export default function AgregarCliente() {
       console.error("Error al actualizar cliente:", error);
     }
   };
+
   const region = ["Todas", "Tuxtla", "Comitan", "Comalapa"];
   const giroDeEmpresa = ["Cadena", "Farmacias", "Carnicerias", "Gobierno"];
 
@@ -78,7 +80,7 @@ export default function AgregarCliente() {
       >
         <Grid container direction={"row"}>
           <Grid item xs={12} display={"flex"} justifyContent={"center"} textAlign={"center"}>
-            <h1>EDITAR " "</h1>
+            <h1>EDITAR CLIENTE</h1>
           </Grid>
           <Grid item xs={12}>
             <Grid container direction={"row"} spacing={2}>
@@ -120,8 +122,7 @@ export default function AgregarCliente() {
               </Grid>
               <Grid item xs={12} lg={6}>
                 <Box sx={{ width: "100%" }}>
-                  <Autocomplete
-                  
+                  <Autocomplete                  
                     disablePortal
                     id="region"
                     options={region}

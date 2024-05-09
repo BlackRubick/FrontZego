@@ -20,7 +20,7 @@ export default function Login() {
       const mensaje = response.data.mensaje;
 
       if (mensaje === "Inicio de sesión exitoso") {
-        router.push("/agregarCliente"); // Redirige a la ruta agregarCliente
+        router.push("/agregarCliente");
       } else {
         alert("Correo o contraseña incorrectos");
       }
