@@ -336,10 +336,6 @@ input[type="file"]::file-selector-button:hover {
   }
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 .clientes-herramientas {
   width: 10%;
   margin: 10px;
@@ -401,14 +397,6 @@ input[type="file"]::file-selector-button:hover {
   border-radius: 100px;
   }
 
-<<<<<<< HEAD
-.formLabel span{
-  color: #000;
-}
-
-.form-subtitle{
-  width: 90%;
-=======
   .gallery-container {
     max-width: 800px;
     margin: 0 auto;
@@ -516,5 +504,4 @@ canvas {
 
 .contact-form form button:hover {
   background-color: #0056b3;
->>>>>>> master
 }
