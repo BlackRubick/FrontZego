@@ -505,3 +505,14 @@ canvas {
 .contact-form form button:hover {
   background-color: #0056b3;
 }
+
+.form-subtitle{
+  width: 90%;
+}
+
+.css-j204z7-MuiFormControlLabel-root {
+  color: #000;
+  span {
+    color: #000;
+  }
+}
