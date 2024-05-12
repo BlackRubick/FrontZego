@@ -1,5 +1,5 @@
-import Nav from "./Organismos/Nav";
-import Footer from "./Organismos/Footer";
+import Nav from "../app/Orgnanismos/Nav";
+import Footer from "./Orgnanismos/Footer";
 import "../../css/globals.css"
 
 export default function RootLayout({ children }) {

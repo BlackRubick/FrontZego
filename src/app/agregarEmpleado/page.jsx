@@ -1,95 +1,53 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   TextField,
   Button,
   Box,
-  styled,
   Stack,
   OutlinedInput,
   InputAdornment,
   IconButton,
-  Autocomplete,
 } from "@mui/material";
-import { useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputLabel from "@mui/material/InputLabel";
-import "../../../css/globals.css";
+import axios from "axios";
 
-export default function agregarEmpleado() {
-  const ColorButton = styled(Button)(({ theme }) => ({
-    color: "black",
-    backgroundColor: "#10754a",
-    "&:hover": {
-      backgroundColor: "#D6D6D6",
-    },
-  }));
-  const [showPassword, setShowPassword] = React.useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const region = ["Todas", "Tuxtla", "Comitan", "Comalapa"]; //aqui se van a consumir las regiones que dejemos por default
-  const giroDeEmpresa = ["Cadena", "Farmacias", "Carnicerias", "Gobierno"]; //aqui se van a consumir los tipos de empresasa que dejemos
-
-  const controlProps = (item) => ({
-    checked: selectedValue === item,
-    onChange: handleChange,
-    value: item,
-    name: "color-radio-button-demo",
-    inputProps: { "aria-label": item },
-  });
-
-  const [name, setName] = useState("");
-  const [nameSucursal, setNameSucursal] = useState("");
-  const [password, setPassword] = useState("");
-  const [direccionSucursal, setDireccionSucural] = useState("");
-  const [mail, setMail] = useState("");
-
-  const [regionValue, setRegionValue] = useState([]);
-  const [giroDeEmpresaValue, setgiroDeEmpresaValue] = useState([]);
-
-  const handlegiroDeEmpresa = (event, value) => {
-    if (value) {
-      setgiroDeEmpresaValue(value);
-    } else {
-      setgiroDeEmpresaValue("");
-    }
-  };
-  const handleregionValue = (event, value) => {
-    if (value) {
-      setRegionValue(value);
-    } else {
-      setRegionValue("");
-    }
-  };
+export default function AgregarEmpleado() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [selectedRole, setSelectedRole] = useState(""); // Estado para almacenar el rol seleccionado
 
   const handleSubmit = async () => {
     try {
-      console.log(values);
-      //token
-      axios
-        .post("http://localhost:8080/", {
-          name: values.name,
-          nameSucursal: values.nameSucursal,
-          mail: values.mail,
-          password: values.password,
-          direccionSucursal: values.direccionSucursal,
-          giroDeEmpresa: values.giroDeEmpresa,
-          region: values.region,
-          token: token, //token
-        })
-        .then((response) => {
-          console.log(response);
-          alert("Cliente Creado");
-          window.location.href = "http://localhost:3000/Empleados";
-        });
+      const nombre = document.getElementById("nombre").value;
+      const correo = document.getElementById("correo").value;
+      const contraseña = document.getElementById("contraseña").value;
+
+      // Enviar datos al backend
+      await axios.post("http://127.0.0.1:5000/agregar-empleado", {
+        nombre,
+        correo,
+        contraseña,
+        tipoEmpleado: "", // Agrega el tipo de empleado aquí
+        rol: selectedRole, // Agrega el rol seleccionado aquí
+      });
+
+      // Si la solicitud se completa correctamente, puedes redirigir o mostrar un mensaje de éxito
+      alert("Empleado agregado correctamente");
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleClickShowPassword = () => {
+    const input = document.getElementById("contraseña");
+    input.type = input.type === "password" ? "text" : "password";
+  };
+
+  const handleRoleChange = (event) => {
+    setSelectedRole(event.target.value); // Actualiza el rol seleccionado cuando cambia la selección del usuario
   };
 
   return (
@@ -114,27 +72,21 @@ export default function agregarEmpleado() {
               justifyContent={"center"}
               textAlign={"center"}
               style={{
-                margin:"0px"
+                margin: "0px",
               }}
             >
-              <h1 style={{
-                margin:"0px"
-              }}>AGREGA UN EMPLEADO</h1>
+              <h1>AGREGA UN EMPLEADO</h1>
             </Grid>
-            <Grid item xs={12}  >
+            <Grid item xs={12}>
               <Grid container direction={"row"} spacing={2}>
                 <Grid item xs={12} lg={1}></Grid>
                 <Grid item xs={12} lg={5}>
                   <TextField
                     fullWidth
                     placeholder="Nombre Del Empleado"
-                    id="name"
+                    id="nombre"
                     multiline
                     required
-                    onChange={(event) => {
-                      setName(event.target.value);
-                    }}
-                    value={name}
                     style={{
                       borderRadius: "5px",
                       backgroundColor: "#F7F7F9",
@@ -146,13 +98,9 @@ export default function agregarEmpleado() {
                   <TextField
                     fullWidth
                     placeholder="Correo del Cliente"
-                    id="mail"
+                    id="correo"
                     multiline
                     required
-                    value={mail}
-                    onChange={(event) => {
-                      setMail(event.target.value);
-                    }}
                     style={{
                       borderRadius: "5px",
                       backgroundColor: "#F7F7F9",
@@ -164,19 +112,14 @@ export default function agregarEmpleado() {
                 <Grid item xs={12} lg={1}></Grid>
                 <Grid item xs={12} lg={5}>
                   <OutlinedInput
-                    type={showPassword ? "text" : "password"}
+                    type="password"
                     required
-                    value={password}
-                    onChange={(event) => {
-                      setPassword(event.target.value);
-                    }}
                     fullWidth
-                    id="password"
+                    id="contraseña"
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
+                          onClick={() => handleClickShowPassword()}
                           edge="end"
                         >
                           {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -186,6 +129,7 @@ export default function agregarEmpleado() {
                   />
                   <InputLabel style={{ fontSize: 12 }}>Contraseña</InputLabel>
                 </Grid>
+                <Grid item xs={12} lg={1}></Grid>
                 <Grid
                   item
                   xs={12}
@@ -195,34 +139,27 @@ export default function agregarEmpleado() {
                   justifyContent={"center"}
                 >
                   <input
-                    id="radio-2"
-                    class="radio-custom"
-                    name="radio-group"
-                    type="radio"
+                    type="checkbox"
+                    id="admin-checkbox"
+                    value="admin"
+                    onChange={handleRoleChange}
                   />
-                  <label for="radio-2" class="radio-custom-label">
-                    Administrador
-                  </label>
+                  <label htmlFor="admin-checkbox">Administrador</label>
                   <input
-                    id="radio-2"
-                    class="radio-custom"
-                    name="radio-group"
-                    type="radio"
+                    type="checkbox"
+                    id="supervisor-checkbox"
+                    value="supervisor"
+                    onChange={handleRoleChange}
                   />
-                  <label for="radio-2" class="radio-custom-label">
-                    Supervisor
-                  </label>
+                  <label htmlFor="supervisor-checkbox">Supervisor</label>
                   <input
-                    id="radio-2"
-                    class="radio-custom"
-                    name="radio-group"
-                    type="radio"
+                    type="checkbox"
+                    id="cliente-checkbox"
+                    value="cliente"
+                    onChange={handleRoleChange}
                   />
-                  <label for="radio-2" class="radio-custom-label">
-                    Cliente
-                  </label>
+                  <label htmlFor="cliente-checkbox">Cliente</label>
                 </Grid>
-                <Grid item xs={12} lg={1}></Grid>
               </Grid>
             </Grid>
 
@@ -230,9 +167,20 @@ export default function agregarEmpleado() {
             <Grid item xs={12} lg={6}>
               <Box>
                 <Stack spacing={2} direction="row">
-                  <ColorButton type="submit" variant="contained" fullWidth>
+                  <Button
+                    variant="contained"
+                    fullWidth
+                    style={{
+                      color: "black",
+                      backgroundColor: "#10754a",
+                      "&:hover": {
+                        backgroundColor: "#D6D6D6",
+                      },
+                    }}
+                    onClick={handleSubmit}
+                  >
                     AGREGAR
-                  </ColorButton>
+                  </Button>
                 </Stack>
               </Box>
             </Grid>

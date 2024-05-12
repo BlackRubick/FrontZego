@@ -3,27 +3,25 @@ import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import ButtonBase from "@mui/material/ButtonBase";
-import logo from "../../../public/coca.png";
 import { Button } from "@mui/material";
+import axios from 'axios';
 
-export default function Cardclient({ c }) {
-  const Img = styled("img")({
-    margin: "auto",
-    display: "block",
-    maxWidth: "100%",
-    maxHeight: "100%",
-  });
+export default function Cardclient({ cliente }) {
+  const handleUpdate = () => {
+    // Navegar a la página de edición junto con los datos del cliente
+    window.location.href = `./editarCliente?id=${cliente.id}&nombre_cliente=${encodeURIComponent(cliente.nombre_cliente)}&nombre_sucursal=${encodeURIComponent(cliente.nombre_sucursal)}&direccion=${encodeURIComponent(cliente.direccion)}`;
+  };
 
-  const handleUpdate = ()=>{
-    //Update
-    window.location.href="./editarCliente"
-  }
-
-  const handleDelete = ()=>{
-    //Delete
-  }
-
+  const handleDelete = () => {
+    axios.post("http://localhost:5000/eliminar-cliente", { id: cliente.id })
+      .then(response => {
+        // Manejar la respuesta si es necesario
+        console.log(response.data.mensaje);
+      })
+      .catch(error => {
+        console.error("Error al eliminar cliente:", error);
+      });
+  };
 
   return (
     <>
@@ -38,37 +36,30 @@ export default function Cardclient({ c }) {
         }}
       >
         <Grid container spacing={2}>
-          <Grid item>
-            <ButtonBase
-              sx={{ width: 128, height: 128 }}
-              onClick={() => {
-                // aqui seteamos el id del animal global
-                window.location.href="./reportes"
-              }}
-            >
-              <img className="animalito" alt="complex" src="http://1.bp.blogspot.com/-FJPLSHI4cVY/T0Kt3koo-gI/AAAAAAABLRU/yelxxfmKiSY/s1600/Coca_Cola_Logo1.jpg" />
-            </ButtonBase>
-          </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item>
                 <Typography gutterBottom fontSize={30}>
-                  {c.nombreEmpresa}
+                  {cliente.nombre_cliente}
                 </Typography>
                 <Typography variant="body2" fontSize={15} marginBottom={2}>
-                  {c.nombreCadena}
+                  {cliente.nombre_sucursal}
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  {c.direccionCadena}
+                  {cliente.direccion}
                 </Typography>
               </Grid>
               <Grid item>
                 <Grid container direction={"row"} spacing={2}>
                   <Grid item xs={6}>
-                    <Button variant="body2" onClick={handleUpdate}>Editar</Button>
+                    <Button variant="body2" onClick={handleUpdate}>
+                      Editar
+                    </Button>
                   </Grid>
                   <Grid item xs={6}>
-                    <Button variant="body2" onClick={handleDelete}>Eliminar</Button>
+                    <Button variant="body2" onClick={handleDelete}>
+                      Eliminar
+                    </Button>
                   </Grid>
                 </Grid>
               </Grid>

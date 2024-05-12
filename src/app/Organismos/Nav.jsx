@@ -45,6 +45,11 @@ const pages = [
     nombrePage: "Descargar",
     href: "../reportesdescarga",
   },
+  {
+    nombrePage: "Graficas",
+    href: "../Graficas",
+  },
+  
 ];
 const settings = ["Perfil", "Cerrar sesión,"];
 

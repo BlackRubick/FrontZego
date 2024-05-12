@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import {
   Grid,
   TextField,
@@ -7,19 +8,16 @@ import {
   Box,
   styled,
   Stack,
-  OutlinedInput,
   InputAdornment,
   IconButton,
   Autocomplete,
 } from "@mui/material";
-import { useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputLabel from "@mui/material/InputLabel";
-import "../../../css/globals.css";
 import { Formik } from "formik";
 
-export default function agregarCliente() {
+export default function AgregarCliente() {
   const ColorButton = styled(Button)(({ theme }) => ({
     color: "black",
     backgroundColor: "#10754a",
@@ -27,125 +25,71 @@ export default function agregarCliente() {
       backgroundColor: "#D6D6D6",
     },
   }));
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
-  const region = ["Todas", "Tuxtla", "Comitan", "Comalapa"]; //aqui se van a consumir las regiones que dejemos por default
-  const giroDeEmpresa = ["Cadena", "Farmacias", "Carnicerias", "Gobierno"]; //aqui se van a consumir los tipos de empresasa que dejemos
-
-  
-
-  
-  const controlProps = (item) => ({
-    checked: selectedValue === item,
-    onChange: handleChange,
-    value: item,
-    name: "color-radio-button-demo",
-    inputProps: { "aria-label": item },
-  });
-
-  const [name,setName] = useState("");
-  const [nameSucursal,setNameSucursal] = useState("");
-  const [password,setPassword] = useState("");
-  const [direccionSucursal,setDireccionSucural] = useState("");
-  const [mail,setMail] = useState("");
-
-  const [regionValue, setRegionValue] = useState([]);
-  const [giroDeEmpresaValue, setgiroDeEmpresaValue] = useState([]);
-
-  const handlegiroDeEmpresa = (event, value) => {
-    if (value) {
-      
-      setgiroDeEmpresaValue(value);
-    } else {
-      setgiroDeEmpresaValue("");
-    }
-  };
-  const handleregionValue= (event, value) => {
-    if (value) {
-    
-      setRegionValue(value);
-    } else {
-      setRegionValue("");
-    }
-  };
-
-  const handleSubmit = async () => {
-    try {
-      console.log(values);
-      //token
-      axios
-        .post("http://localhost:8080/", {
-          name: values.name,
-          nameSucursal: values.nameSucursal,
-          mail: values.mail,
-          password: values.password,
-          direccionSucursal: values.direccionSucursal,
-          giroDeEmpresa: values.giroDeEmpresa,
-          region: values.region,
-          token: token, //token
-        })
-        .then((response) => {
-          console.log(response);
-          alert("Cliente Creado");
-          window.location.href = "http://localhost:3000/clientes";
-        });
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const region = ["Todas", "Tuxtla", "Comitan", "Comalapa"];
+  const giroDeEmpresa = ["Cadena", "Farmacias", "Carnicerias", "Gobierno"];
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <form
-          className="containerAgregarClientesFondo"
-          style={{
-            justifyContent: "center",
-          }}
-        >
-          <Grid container direction={"row"}>
-            <Grid
-              item
-              xs={12}
-              display={"flex"}
-              justifyContent={"center"}
-              textAlign={"center"}
+      <div style={{ display: "flex", justifyContent: "center" }}>
+      <Formik
+  initialValues={{
+    nombre_cliente: "",
+    nombre_sucursal: "",
+    correo_cliente: "",
+    contraseña: "",
+    direccion: "",
+    region: "",
+    giro_empresa: ""
+  }}
+  onSubmit={async (values, { resetForm }) => {
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/agregar-empresa",
+        values // Enviar solo los valores del formulario en lugar de un FormData
+      );
+      console.log(response.data);
+      alert("Cliente Creado");
+      resetForm(); // Restablecer el formulario después del envío
+    } catch (error) {
+      console.error(error);
+    }
+  }}
+>
+
+          {({ values, handleChange, handleSubmit }) => (
+            <form
+              className="containerAgregarClientesFondo"
+              style={{ justifyContent: "center" }}
+              onSubmit={handleSubmit}
             >
-              <h1>AGREGA UN CLIENTE</h1>
-            </Grid>
-            <Grid item xs={12}>
-              <Grid container direction={"row"} spacing={2}>
-                <Grid item xs={12} lg={6}>
-                  <label for="images" class="drop-container" id="dropcontainer">
-                    <span class="drop-title">Agrega La imagen</span>
-                    <span class="drop-title">Del Cliente</span>
-                    ó
-                    <input type="file" id="images" accept="image/*" required />
-                  </label>
+              <Grid container direction={"row"}>
+                <Grid
+                  item
+                  xs={12}
+                  display={"flex"}
+                  justifyContent={"center"}
+                  textAlign={"center"}
+                >
+                  <h1>AGREGA UN CLIENTE</h1>
                 </Grid>
-                <Grid item xs={12} lg={6}>
+                <Grid item xs={12}>
                   <Grid container direction={"row"} spacing={2}>
                     <Grid item xs={12} lg={6}>
+                      {/* Nombre del cliente */}
                       <TextField
                         fullWidth
                         placeholder="Nombre Del Cliente"
-                        id="name"
+                        id="nombre_cliente"
                         multiline
                         required
-                        onChange={(event)=>{
-                          setName(event.target.value)
-                        }}
-                        value={name}
-                    
+                        value={values.nombre_cliente}
+                        onChange={handleChange}
                         style={{
                           borderRadius: "5px",
                           backgroundColor: "#F7F7F9",
@@ -154,16 +98,15 @@ export default function agregarCliente() {
                       ></TextField>
                     </Grid>
                     <Grid item xs={12} lg={6}>
+                      {/* Nombre de la sucursal */}
                       <TextField
                         fullWidth
                         placeholder="Nombre De la Sucursal"
-                        id="nameSucursal"
+                        id="nombre_sucursal"
                         multiline
                         required
-                        value={nameSucursal}
-                        onChange={(event)=>{
-                          setNameSucursal(event.target.value)
-                        }}
+                        value={values.nombre_sucursal}
+                        onChange={handleChange}
                         style={{
                           borderRadius: "5px",
                           backgroundColor: "#F7F7F9",
@@ -172,16 +115,15 @@ export default function agregarCliente() {
                       ></TextField>
                     </Grid>
                     <Grid item xs={12} lg={6}>
+                      {/* Dirección */}
                       <TextField
                         fullWidth
                         placeholder="Direccion"
-                        id="direccionSucursal"
+                        id="direccion"
                         multiline
                         required
-                        value={direccionSucursal}
-                        onChange={(event)=>{
-                          setDireccionSucural(event.target.value)
-                        }}
+                        value={values.direccion}
+                        onChange={handleChange}
                         style={{
                           borderRadius: "5px",
                           backgroundColor: "#F7F7F9",
@@ -189,8 +131,8 @@ export default function agregarCliente() {
                         }}
                       ></TextField>
                     </Grid>
-
                     <Grid item xs={12} lg={6}>
+                      {/* Región */}
                       <Box sx={{ width: "100%" }}>
                         <Autocomplete
                           disablePortal
@@ -202,7 +144,10 @@ export default function agregarCliente() {
                               ? option
                               : ""
                           }
-                          onChange={handleregionValue}
+                          onChange={(event, value) => {
+                            handleChange("region")(value);
+                          }}
+                          value={values.region}
                           sx={{ width: "100%" }}
                           renderInput={(params) => (
                             <TextField {...params} label="Region" />
@@ -211,10 +156,11 @@ export default function agregarCliente() {
                       </Box>
                     </Grid>
                     <Grid item xs={12} lg={6}>
+                      {/* Giro de la empresa */}
                       <Box sx={{ width: "100%" }}>
                         <Autocomplete
                           disablePortal
-                          id="Giro De Empresa"
+                          id="giro_empresa"
                           options={giroDeEmpresa}
                           getOptionLabel={(option) =>
                             typeof option === "string" ||
@@ -222,8 +168,10 @@ export default function agregarCliente() {
                               ? option
                               : ""
                           }
-                          required
-                          onChange={handlegiroDeEmpresa}
+                          onChange={(event, value) => {
+                            handleChange("giro_empresa")(value);
+                          }}
+                          value={values.giro_empresa}
                           sx={{ width: "100%" }}
                           renderInput={(params) => (
                             <TextField {...params} label="Giro De Empresa" />
@@ -231,19 +179,16 @@ export default function agregarCliente() {
                         ></Autocomplete>
                       </Box>
                     </Grid>
-
                     <Grid item xs={12} lg={6}>
+                      {/* Correo del cliente */}
                       <TextField
                         fullWidth
                         placeholder="Correo del Cliente"
-                        id="mail"
-                       
+                        id="correo_cliente"
                         multiline
                         required
-                        value={mail}
-                        onChange={(event)=>{
-                          setMail(event.target.value)
-                        }}
+                        value={values.correo_cliente}
+                        onChange={handleChange}
                         style={{
                           borderRadius: "5px",
                           backgroundColor: "#F7F7F9",
@@ -252,52 +197,55 @@ export default function agregarCliente() {
                       ></TextField>
                     </Grid>
                     <Grid item xs={12} lg={6}>
-                      <OutlinedInput
-                        type={showPassword ? "text" : "password"}
-                        required
-                        value={password}
-                        onChange={(event)=>{
-                          setPassword(event.target.value)
-                        }}
+                      {/* Contraseña */}
+                      <TextField
                         fullWidth
-                        id="password"
-                        endAdornment={
-                          <InputAdornment position="end">
-                            <IconButton
-                              onClick={handleClickShowPassword}
-                              onMouseDown={handleMouseDownPassword}
-                              edge="end"
-                            >
-                              {showPassword ? (
-                                <VisibilityOff />
-                              ) : (
-                                <Visibility />
-                              )}
-                            </IconButton>
-                          </InputAdornment>
-                        }
-                      />
-                      <InputLabel style={{ fontSize: 12 }}>
-                        Contraseña
-                      </InputLabel>
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Contraseña"
+                        id="contraseña"
+                        required
+                        value={values.contraseña}
+                        onChange={handleChange}
+                        style={{
+                          borderRadius: "5px",
+                          backgroundColor: "#F7F7F9",
+                          opacity: "75%",
+                        }}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <IconButton
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end"
+                              >
+                                {showPassword ? (
+                                  <VisibilityOff />
+                                ) : (
+                                  <Visibility />
+                                )}
+                              </IconButton>
+                            </InputAdornment>
+                          ),
+                        }}
+                      ></TextField>
                     </Grid>
-                 
                   </Grid>
                 </Grid>
               </Grid>
-            </Grid>
-            <Grid item xs={12} lg={3}></Grid>
-            <Grid item xs={12} lg={6}>
-              <Box>
-                <Stack spacing={2} direction="row">
-                  <ColorButton type="submit" variant="contained" fullWidth>
-                    AGREGAR
-                  </ColorButton>
-                </Stack>
-              </Box>
-            </Grid>
-          </Grid>
-        </form>
+              <Grid item xs={12} lg={3}></Grid>
+              <Grid item xs={12} lg={6}>
+                <Box>
+                  <Stack spacing={2} direction="row">
+                    <ColorButton type="submit" variant="contained" fullWidth>
+                      AGREGAR
+                    </ColorButton>
+                  </Stack>
+                </Box>
+              </Grid>
+            </form>
+          )}
+        </Formik>
       </div>
     </>
   );

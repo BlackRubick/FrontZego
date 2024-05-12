@@ -86,7 +86,7 @@
 
 @media (min-width: 1200px) {
   .cardReporte {
-    height: 75px;
+    height: 80px;
   }
 }
 
@@ -123,11 +123,6 @@
   cursor: pointer;
 }
 
-.addDataButton {
-  background: #fffbdc;
-  color: #D6D6D6;
-}
-
 @media (min-width: 768px) {
   .add{
     height: 60px;
@@ -142,23 +137,3 @@
   }
 }
 
-
-.containerCardsReportesFondo {
-  display: flex;
-  width: 80%;
-  margin: 35px;
-  height: 850px;
-  padding: 20px;
-  box-shadow: -5px 6px 32px -3px rgba(0, 0, 0, 0.2);
-  border-color: #65717d;
-  border-radius: 5px;
-  overflow: auto;
-  color: #000;
-}
-
-@media (min-width: 768px) {
-  .containerCardsReportesFondo {
-    width: 90%;
-    height: 560px;
-  }
-}

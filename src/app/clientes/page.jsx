@@ -1,68 +1,37 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../../css/globals.css";
 import Cardclient from "../Moleculas/CardClient";
 import { Button, Grid, Box, Autocomplete, TextField, styled, Stack } from "@mui/material";
+import axios from "axios";
 
 export default function Clientes() {
-  const region = ["Todas", "Tuxtla", "Comitan", "Comalapa"]; //aqui se van a consumir las regiones que dejemos por default
-  const giroDeEmpresa = ["Cadena", "Farmacias", "Carnicerias", "Gobierno"]; //aqui se van a consumir los tipos de empresasa que dejemos
-  const nombreDeEmpresa = ["CocaCola", "Farmacia Santa Cruz", "Carniceria"];
+  const [region, setRegion] = useState([]);
+  const [giroDeEmpresa, setGiroDeEmpresa] = useState([]);
+  const [nombreDeEmpresa, setNombreDeEmpresa] = useState([]);
+  const [clientes, setClientes] = useState([]);
 
-  const [regionValue, setRegionValue] = useState([]);
-  const [giroDeEmpresaValue, setgiroDeEmpresaValue] = useState([]);
-  const [nombreDeEmpresaValue, setNombreDeEmpresaValue] = useState([]);
-
-  //ejemplo de arreglo para consumir clientes
-  const clientes = [
-    {
-      nombreEmpresa: "Coca",
-      nombreCadena: "Norte Poniente",
-      direccionCadena: "2 av sur pte entre 4ta pte y 3rapte",
-    },
-    {
-      nombreEmpresa: "Coca",
-      nombreCadena: "Norte Poniente",
-      direccionCadena: "2 av sur pte entre 4ta pte y 3rapte",
-    },
-    {
-      nombreEmpresa: "Coca",
-      nombreCadena: "Norte Poniente",
-      direccionCadena: "2 av sur pte entre 4ta pte y 3rapte",
-    },
-    {
-      nombreEmpresa: "Coca",
-      nombreCadena: "Norte Poniente",
-      direccionCadena: "2 av sur pte entre 4ta pte y 3rapte",
-    },
-    {
-      nombreEmpresa: "Coca",
-      nombreCadena: "Norte Poniente",
-      direccionCadena: "2 av sur pte entre 4ta pte y 3rapte",
-    },
-    {
-      nombreEmpresa: "Coca",
-      nombreCadena: "Norte Poniente",
-      direccionCadena: "2 av sur pte entre 4ta pte y 3rapte",
-    },
-    {
-      nombreEmpresa: "Coca",
-      nombreCadena: "Norte Poniente",
-      direccionCadena: "2 av sur pte entre 4ta pte y 3rapte",
-    },
-    {
-      nombreEmpresa: "Coca",
-      nombreCadena: "Norte Poniente",
-      direccionCadena: "2 av sur pte entre 4ta pte y 3rapte",
-    },
-    {
-      nombreEmpresa: "Coca",
-      nombreCadena: "Norte Poniente",
-      direccionCadena: "2 av sur pte entre 4ta pte y 3rapte",
-    },
-  ];
-
-  //Use effect para renderizado condicional
+  useEffect(() => {
+    // Cargar regiones
+    axios.get("http://localhost:5000/empresas")
+      .then(response => {
+        setRegion(response.data);
+      })
+      .catch(error => console.error("Error al cargar regiones:", error));
+    
+    axios.get("http://localhost:5000/empresas")
+      .then(response => {
+        setGiroDeEmpresa(response.data);
+      })
+      .catch(error => console.error("Error al cargar tipos de empresa:", error));
+    
+    // Cargar empresas
+    axios.get("http://localhost:5000/empresas")
+      .then(response => {
+        setClientes(response.data);
+      })
+      .catch(error => console.error("Error al cargar empresas:", error));
+  }, []);
 
   const ColorButton = styled(Button)(({ theme }) => ({
     color: "black",
@@ -71,6 +40,10 @@ export default function Clientes() {
       backgroundColor: "#D6D6D6",
     },
   }));
+
+  const handleAgregarCliente = () => {
+    window.location.href = "./agregarCliente";
+  }
 
   return (
     <>
@@ -116,19 +89,11 @@ export default function Clientes() {
                           ? option
                           : ""
                       }
-                      onChange={(e, value) => {
-                        console.log(value);
-                        setRegionValue(
-                          "region",
-                          value !== null ? value : values.region
-                        );
-                        // aca haremos los cambios de renderizacion de cards por region
-                      }}
                       sx={{ width: "100%" }}
                       renderInput={(params) => (
                         <TextField {...params} label="Region" />
                       )}
-                    ></Autocomplete>
+                    />
                   </Box>
                 </Grid>
                 <Grid
@@ -141,27 +106,18 @@ export default function Clientes() {
                   <Box sx={{ width: "100%" }}>
                     <Autocomplete
                       disablePortal
-                      id="Giro De Empresa"
+                      id="giroDeEmpresa"
                       options={giroDeEmpresa}
                       getOptionLabel={(option) =>
                         typeof option === "string" || option instanceof String
                           ? option
                           : ""
                       }
-                      required
-                      onChange={(e, value) => {
-                        console.log(value);
-
-                        setgiroDeEmpresaValue(
-                          "giroDeEmpresa",
-                          value !== null ? value : values.giroDeEmpresa
-                        );
-                      }}
                       sx={{ width: "100%" }}
                       renderInput={(params) => (
                         <TextField {...params} label="Giro De Empresa" />
                       )}
-                    ></Autocomplete>
+                    />
                   </Box>
                 </Grid>
                 <Grid
@@ -181,35 +137,25 @@ export default function Clientes() {
                           ? option
                           : ""
                       }
-                      required
-                      onChange={(e, value) => {
-                        console.log(value);
-                        setNombreDeEmpresaValue(
-                          "nombreDeEmpresa",
-                          value !== null ? value : values.nombreDeEmpresa
-                        );
-                      }}
                       sx={{ width: "100%" }}
                       renderInput={(params) => (
                         <TextField {...params} label="Buscador" />
                       )}
-                    ></Autocomplete>
+                    />
                   </Box>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item xs={12}>
               <Grid container direction={"row"} spacing={2}>
-                {clientes.map((cliente, index) => {
-                  console.log(cliente);
-                  return (
-                    <Grid item xs={12} lg={4}>
-                      <div key={index}>
-                        <Cardclient c={cliente} />
-                      </div>
-                    </Grid>
-                  );
-                })}
+                {clientes.map((cliente, index) => (
+                  <Grid item xs={12} lg={4} key={index}>
+                    <div>
+                      
+                    <Cardclient cliente={cliente} />
+                    </div>
+                  </Grid>
+                ))}
               </Grid>
             </Grid>
           </Grid>
@@ -218,12 +164,9 @@ export default function Clientes() {
       <div className="clientes-herramientas">
         <Stack spacing={2} direction="row">
           <ColorButton
-            type="submit"
             variant="contained"
             fullWidth
-            onClick={() => {
-              window.location.href = "./agregarCliente";
-            }}
+            onClick={handleAgregarCliente}
           >
             AGREGAR
           </ColorButton>

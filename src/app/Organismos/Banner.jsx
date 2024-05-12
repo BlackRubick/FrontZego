@@ -1,5 +1,5 @@
 import React from 'react';
-import "./organismos.css";
+import "../Organismos/organismos.css";
 
 
 
