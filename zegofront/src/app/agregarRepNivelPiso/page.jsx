@@ -14,7 +14,7 @@ export default function agregarRepNIvelPiso() {
     },
   }));
 
-
+  const [nombre2, setNombre2] = useState("Coca cola");
   const [generatedPdf, setGeneratedPdf] = useState(null);
   const [tipoDeServicio, setTipoDeServicio] = useState("");
 
@@ -27,8 +27,10 @@ export default function agregarRepNIvelPiso() {
 
   const handlePdf = async (event) => {
     try {
+      const nombre2 = "Coca cola";
+
       const url =
-        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475529/eduplanet/pdfs/cjjel4yde8j5jw6vju2e.pdf";
+        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475568/eduplanet/pdfs/j8lbxgypxofwxsplo9jo.pdf";
       const existingPdfBytes = await fetch(url).then((res) =>
         res.arrayBuffer()
       );

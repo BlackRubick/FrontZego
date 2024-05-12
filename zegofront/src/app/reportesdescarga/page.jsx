@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import "../../../css/globals.css";
-import "../Orgnanismos/organismos.css";
+import "../Organismos/organismos.css";
 import { useState } from "react";
 import "../../../public/download-solid.svg";
 import {

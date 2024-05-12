@@ -123,6 +123,11 @@
   cursor: pointer;
 }
 
+.addDataButton {
+  background: #fffbdc;
+  color: #D6D6D6;
+}
+
 @media (min-width: 768px) {
   .add{
     height: 60px;

@@ -124,6 +124,13 @@ export default function agregarOrdenSencilla() {
   const [alacranes, setAlacranes] = useState(false);
   const [termitas, setTermitas] = useState(false);
   const [roedores, setRoedores] = useState(false);
+  const [inspeccionPro, setInspeccionPro] = useState(false);
+  const [manejoPlagas, setManejoPlagas] = useState(false);
+  const [monitoreo, setMonitoreo] = useState(false);
+  const [desinfeccion, setDesinfeccion] = useState(false);
+  const [servicioTrampas, setServicioTrampas] = useState(false);
+  const [manejoResiduos, setManejoResiduos] = useState(false);
+  const [accionesCorrectivas, setAccionesCorrectivas] = useState(false);
   const [profesionalResponsable, setProfesionalResponsable] = useState("");
   const [superficie, setSuperficie] = useState("");
   const [presupuestoGeneral, setPresupuestoGeneral] = useState("");
@@ -203,48 +210,70 @@ export default function agregarOrdenSencilla() {
         font: helveticaFont,
       });
 
-      firstPage.drawText("X", {
-        x: 43,
-        y: 559,
-        size: 10,
-        font: helveticaFont,
-      });
-      firstPage.drawText("X", {
-        x: 123,
-        y: 559,
-        size: 10,
-        font: helveticaFont,
-      });
-      firstPage.drawText("X", {
-        x: 198,
-        y: 559,
-        size: 10,
-        font: helveticaFont,
-      });
-      firstPage.drawText("X", {
-        x: 278,
-        y: 559,
-        size: 10,
-        font: helveticaFont,
-      });
-      firstPage.drawText("X", {
-        x: 357,
-        y: 559,
-        size: 10,
-        font: helveticaFont,
-      });
-      firstPage.drawText("X", {
-        x: 435,
-        y: 559,
-        size: 10,
-        font: helveticaFont,
-      });
-      firstPage.drawText("X", {
-        x: 513,
-        y: 559,
-        size: 10,
-        font: helveticaFont,
-      });
+      //tipo de servicio checkboxes
+
+      if (inspeccionPro) {
+        firstPage.drawText("X", {
+          x: 43,
+          y: 559,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
+
+      if (manejoPlagas) {
+        firstPage.drawText("X", {
+          x: 123,
+          y: 559,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
+
+      if (monitoreo) {
+        firstPage.drawText("X", {
+          x: 198,
+          y: 559,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
+
+      if (desinfeccion){
+        firstPage.drawText("X", {
+          x: 278,
+          y: 559,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
+
+      if (servicioTrampas) {
+        firstPage.drawText("X", {
+          x: 357,
+          y: 559,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
+
+      if (manejoResiduos) {
+        firstPage.drawText("X", {
+          x: 435,
+          y: 559,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
+
+      if (accionesCorrectivas) {
+        firstPage.drawText("X", {
+          x: 513,
+          y: 559,
+          size: 10,
+          font: helveticaFont,
+        });
+      }
 
       // CheckBox
 
@@ -264,7 +293,7 @@ export default function agregarOrdenSencilla() {
         });
       }
 
-      if (cebadero) { //esta seteando la x en 'cebadero' en vez de 'trampas mecanicas'
+      if (cebadero) {
         firstPage.drawText("X", {
           x: 243,
           y: 450,
@@ -654,6 +683,8 @@ export default function agregarOrdenSencilla() {
                     display={"flex"}
                     justifyContent={"center"}
                   >
+
+                    <h2 className="form-subtitle">DATOS DEL CLIENTE</h2>
                   
                     <Grid item xs={12} lg={6}>
                       <TextField
@@ -838,8 +869,220 @@ export default function agregarOrdenSencilla() {
                     </Grid>
                     <Grid item xs={12} lg={6}></Grid>
 
+                    <h2 className="form-subtitle">TIPO DE SERVICIO</h2>
+
+                    <Grid item xs={12} lg={3}>
+                      <FormControl className="formLabel">
+                        <FormLabel id="demo-row-radio-buttons-group-label">
+                          Inspección Profesional
+                        </FormLabel>
+                        <RadioGroup
+                          row
+                          aria-labelledby="demo-row-radio-buttons-group-label"
+                          name="row-radio-buttons-group"
+                        >
+                          <FormControlLabel
+                            value="Si"
+                            onChange={() => {
+                              setInspeccionPro(true);
+                            }}
+                            control={<Radio />}
+                            label="SI"
+                          />
+                          <FormControlLabel
+                            value="No"
+                            onChange={() => {
+                              setInspeccionPro(false);
+                            }}
+                            control={<Radio />}
+                            label="No"
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+
+                    <Grid item xs={12} lg={3}>
+                      <FormControl className="formLabel">
+                        <FormLabel id="demo-row-radio-buttons-group-label">
+                          Manejo Integral de Plagas
+                        </FormLabel>
+                        <RadioGroup
+                          row
+                          aria-labelledby="demo-row-radio-buttons-group-label"
+                          name="row-radio-buttons-group"
+                        >
+                          <FormControlLabel
+                            value="Si"
+                            onChange={() => {
+                              setManejoPlagas(true);
+                            }}
+                            control={<Radio />}
+                            label="SI"
+                          />
+                          <FormControlLabel
+                            value="No"
+                            onChange={() => {
+                              setManejoPlagas(false);
+                            }}
+                            control={<Radio />}
+                            label="No"
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+
+                    <Grid item xs={12} lg={3}>
+                      <FormControl className="formLabel">
+                        <FormLabel component="legend">
+                          Monitoreo Programado
+                        </FormLabel>
+                        <RadioGroup
+                          row
+                          aria-labelledby="demo-row-radio-buttons-group-label"
+                          name="row-radio-buttons-group"
+                        >
+                          <FormControlLabel
+                            value="Si"
+                            onChange={() => {
+                              setMonitoreo(true);
+                            }}
+                            control={<Radio />}
+                            label="SI"
+                          />
+                          <FormControlLabel
+                            value="No"
+                            onChange={() => {
+                              setMonitoreo(false);
+                            }}
+                            control={<Radio />}
+                            label="No"
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+
+                    <Grid item xs={12} lg={3}>
+                      <FormControl className="formLabel">
+                        <FormLabel component="legend">
+                          Desinfección y Planificación
+                        </FormLabel>
+                        <RadioGroup
+                          row
+                          aria-labelledby="demo-row-radio-buttons-group-label"
+                          name="row-radio-buttons-group"
+                        >
+                          <FormControlLabel
+                            value="Si"
+                            onChange={() => {
+                              setDesinfeccion(true);
+                            }}
+                            control={<Radio />}
+                            label="SI"
+                          />
+                          <FormControlLabel
+                            value="No"
+                            control={<Radio />}
+                            onChange={() => {
+                              setDesinfeccion(false);
+                            }}
+                            label="No"
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+
+                    <Grid item xs={12} lg={3}>
+                      <FormControl className="formLabel">
+                        <FormLabel component="legend">
+                          Servicio a Trampas de Grasa
+                        </FormLabel>
+                        <RadioGroup
+                          row
+                          aria-labelledby="demo-row-radio-buttons-group-label"
+                          name="row-radio-buttons-group"
+                        >
+                          <FormControlLabel
+                            value="Si"
+                            onChange={() => {
+                              setServicioTrampas(true);
+                            }}
+                            control={<Radio />}
+                            label="SI"
+                          />
+                          <FormControlLabel
+                            value="No"
+                            onChange={() => {
+                              setServicioTrampas(false);
+                            }}
+                            control={<Radio />}
+                            label="No"
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+
+                    <Grid item xs={12} lg={3}>
+                      <FormControl className="formLabel">
+                        <FormLabel component="legend">
+                          Manejo de Residuos Especiales
+                        </FormLabel>
+                        <RadioGroup
+                          row
+                          aria-labelledby="demo-row-radio-buttons-group-label"
+                          name="row-radio-buttons-group"
+                        >
+                          <FormControlLabel
+                            value="Si"
+                            onChange={() => {
+                              setManejoResiduos(true);
+                            }}
+                            control={<Radio />}
+                            label="SI"
+                          />
+                          <FormControlLabel
+                            value="No"
+                            onChange={() => {
+                              setManejoResiduos(false);
+                            }}
+                            control={<Radio />}
+                            label="No"
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+
+                    <Grid item xs={12} lg={3}>
+                      <FormControl className="formLabel">
+                        <FormLabel component="legend">
+                          Acciones Correctivas y Preventivas
+                        </FormLabel>
+                        <RadioGroup
+                          row
+                          aria-labelledby="demo-row-radio-buttons-group-label"
+                          name="row-radio-buttons-group"
+                        >
+                          <FormControlLabel
+                            value="Si"
+                            onChange={() => {
+                              setAccionesCorrectivas(true);
+                            }}
+                            control={<Radio />}
+                            label="SI"
+                          />
+                          <FormControlLabel
+                            value="No"
+                            onChange={() => {
+                              setAccionesCorrectivas(false);
+                            }}
+                            control={<Radio />}
+                            label="No"
+                          />
+                        </RadioGroup>
+                      </FormControl>
+                    </Grid>
+
                
-              
+                  <h2 className="form-subtitle">SISTEMAS DE APLICACIÓN</h2>
 
                     <Grid item xs={12} lg={3}>
                       <FormControl className="formLabel">
@@ -1140,6 +1383,8 @@ export default function agregarOrdenSencilla() {
                     </Grid>
                     <Grid item xs={12} lg={6}></Grid>
 
+                    <h2 className="form-subtitle">PLAGAS DETECTADAS</h2>
+
                     <Grid item xs={12} lg={3}>
                       <FormControl className="formLabel">
                         <FormLabel component="legend">Cucarachas</FormLabel>
@@ -1391,6 +1636,8 @@ export default function agregarOrdenSencilla() {
                         </RadioGroup>
                       </FormControl>
                     </Grid>
+
+                    <h2 className="form-subtitle">MATERIALES A UTILIZAR</h2>
                     <Grid item xs={12} lg={9}></Grid>
                     <Grid item xs={12} lg={6}>
                       <Box sx={{ width: "100%" }}>

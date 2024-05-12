@@ -14,7 +14,7 @@ export default function agregarRepTrampasDeLuz() {
     },
   }));
 
-
+  const [nombre2, setNombre2] = useState("Coca cola");
   const [generatedPdf, setGeneratedPdf] = useState(null);
   const [tipoDeServicio, setTipoDeServicio] = useState("");
 
@@ -28,7 +28,7 @@ export default function agregarRepTrampasDeLuz() {
   const handlePdf = async (event) => {
     try {
       const url =
-        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475529/eduplanet/pdfs/cjjel4yde8j5jw6vju2e.pdf";
+        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475530/eduplanet/pdfs/cfzo2bk2eqmmqdvsy0ez.pdf";
       const existingPdfBytes = await fetch(url).then((res) =>
         res.arrayBuffer()
       );

@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "../Orgnanismos/Banner";
+import Banner from "../Organismos/Banner";
 import Cards from "../Moleculas/Cards";
 import { Grid } from "@mui/material";
 

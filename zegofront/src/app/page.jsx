@@ -1,7 +1,7 @@
 import React from "react";
 import "../../css/globals.css";
 import Cards from "./Moleculas/Cards";
-import Banner from "./Orgnanismos/Banner";
+import Banner from "./Organismos/Banner";
 import { Grid } from "@mui/material";
 
 export default function Home() {
