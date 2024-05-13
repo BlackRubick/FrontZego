@@ -49,9 +49,12 @@ const pages = [
     nombrePage: "Graficas",
     href: "../Graficas",
   },
+  {
+    nombrePage: " Iniciar Sesion",
+    href: "../Login",
+  }
   
 ];
-const settings = ["Perfil", "Cerrar sesión,"];
 
 function Nav() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -131,12 +134,7 @@ function Nav() {
               >
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="Open settings">
-                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src="/static/images/avatar/2.jpg"
-                      />
-                    </IconButton>
+                   
                   </Tooltip>
                   <Menu
                     sx={{ mt: "45px" }}
