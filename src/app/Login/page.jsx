@@ -18,9 +18,13 @@ export default function Login() {
       });
   
       const mensaje = response.data.mensaje;
+      const rol = response.data.rol;
+      const nombre = response.data.nombre; // Obtener el nombre del usuario del response
 
       if (mensaje === "Inicio de sesión exitoso") {
-        router.push("/agregarCliente");
+        localStorage.setItem('userRole', rol);
+        localStorage.setItem('userName', nombre); // Guardar el nombre del usuario en localStorage
+        router.push("/"); // Redirigir al Home después del inicio de sesión
       } else {
         alert("Correo o contraseña incorrectos");
       }
