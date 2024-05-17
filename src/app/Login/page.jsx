@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'; // Importa useRouter de Next.js
 import { TextField, Button } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { Formik } from "formik";
+import { Padding } from "@mui/icons-material";
 
 export default function Login() {
   const baseUrl = "http://127.0.0.1:5000/login";
@@ -76,6 +77,9 @@ export default function Login() {
                   onBlur={handleBlur}
                   name="user" 
                 />
+                <br />
+                <br />
+                <br />
                 <TextField
                   type="password"
                   className="Entradas"
@@ -86,6 +90,7 @@ export default function Login() {
                   name="password" 
                 />
               </div>
+              <br /><br />
               <div>
                 <Stack spacing={2} direction="row">
                   <Button variant="contained" type="submit">
