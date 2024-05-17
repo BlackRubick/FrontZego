@@ -152,9 +152,7 @@ export default function Reportes() {
                           src="https://cdn.icon-icons.com/icons2/931/PNG/512/edit_modify_icon-icons.com_72390.png"
                           alt="imagen"
                           className="download"
-                          onClick={() => {
-                            window.location.href = "./editarLicenciaSanitaria";
-                          }}
+                          
                         />
                       </Grid>
                       <Grid item xs={6} lg={3}>
@@ -162,6 +160,9 @@ export default function Reportes() {
                           src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png"
                           alt="imagen"
                           className="add"
+                          onClick={() => {
+                            window.location.href = "./editarLicenciaSanitaria";
+                          }}
                         />
                       </Grid>
                       <Grid item xs={6} lg={3}>
@@ -236,7 +237,7 @@ export default function Reportes() {
                           alt="agregar"
                           className="add"
                           onClick={() => {
-                            window.location.href = "./agregarLicenciaSanitaria";
+                            window.location.href = "./agregarOrdenDeServicio";
                           }}
                         />
                       </Grid>
@@ -329,7 +330,7 @@ export default function Reportes() {
                           alt="agregar"
                           className="add"
                           onClick={() => {
-                            window.location.href = "./agregarLicenciaSanitaria";
+                            window.location.href = "./agregarRepNivelPiso";
                           }}
                         />
                       </Grid>
@@ -405,7 +406,6 @@ export default function Reportes() {
                             "fecha",
                             value !== null ? value : values.fecha
                           );
-                          // aca haremos los cambios de renderizacion de cards por region
                         }}
                         sx={{ width: "100%" }}
                         renderInput={(params) => (
@@ -422,7 +422,7 @@ export default function Reportes() {
                           alt="agregar"
                           className="add"
                           onClick={() => {
-                            window.location.href = "./agregarLicenciaSanitaria";
+                            window.location.href = "./agregarRepTrampasDeLuz";
                           }}
                         />
                       </Grid>

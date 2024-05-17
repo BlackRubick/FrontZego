@@ -25,16 +25,11 @@ export default function Footer() {
                 }}
               >
                 <Grid container direction={"column"} spacing={0}>
-                  <Grid item>
-                    <h2 className="contxD"> Contactanos</h2>
-                  </Grid>
+               
 
                   <Grid item>
                     <Grid container direction={"row"} spacing={0}>
-                      <h2 className="num">
-                        <LocalPhoneIcon className="phonexD"></LocalPhoneIcon>{" "}
-                        +52 96116681124
-                      </h2>
+                   
                     </Grid>
                   </Grid>
                 </Grid>
@@ -45,6 +40,8 @@ export default function Footer() {
               <div
                 style={{
                   textAlign: "center",
+                  marginTop:"5px",
+                  
                 }}
               >
                 <h2 className="titulo">ZEGO S.A DE C.V</h2>
@@ -76,9 +73,7 @@ export default function Footer() {
                         alignItems: "center",
                       }}
                     >
-                      <h2>
-                        <FacebookIcon></FacebookIcon>Zego Fumigaciones
-                      </h2>
+                   
                     </Grid>
                   </Grid>
 
@@ -90,9 +85,7 @@ export default function Footer() {
                         display: "flex",
                       }}
                     >
-                      <h2>
-                        <Email></Email> ZegoFumigaciones@Gmail.com
-                      </h2>
+                     
                     </Grid>
                   </Grid>
                 </Grid>

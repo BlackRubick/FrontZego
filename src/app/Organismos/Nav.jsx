@@ -19,6 +19,10 @@ const pages = {
     { nombrePage: "Reportes", href: "../reportes" },
     { nombrePage: "Descargar", href: "../reportesdescarga" },
     { nombrePage: "Graficas", href: "../graficas" },
+    { nombrePage: "Agregar Empleado", href: "../agregarEmpleado" },
+    { nombrePage: "Editar Empleado", href: "../agregarEmpleado" },
+
+
   ],
   supervisor: [
     { nombrePage: "Inicio", href: "../" },
@@ -136,7 +140,6 @@ function Nav() {
                 )}
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="Open settings">
-                    {/* Aquí podrías agregar los botones de configuración del usuario */}
                   </Tooltip>
                 </Box>
               </div>
