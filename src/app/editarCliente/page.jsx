@@ -51,6 +51,10 @@ export default function EditarCliente({ clienteId }) {
     }
   };
 
+
+
+  //Aquin esta la aprte para poder actualizar los clientes 
+  //por eso no jalaba esa mamada 
   const handleSubmit = async () => {
     try {
       const response = await axios.put(`http://localhost:5000/editar-cliente/${clienteId}`, {

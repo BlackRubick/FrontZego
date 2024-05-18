@@ -3,77 +3,76 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
+import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Button from '@mui/material/Button';
 import Enlaces from "../Atomos/Enlaces";
-import { Grid } from "@mui/material";
+import { useRouter } from 'next/navigation'; // Importa useRouter de Next.js
 
-const pages = [
-  {
-    nombrePage: "Inicio",
-    href: "../",
-  },
-  {
-    nombrePage: "Servicios",
-    href: "../servicios",
-  },
-  {
-    nombrePage: "Galeria",
-    href: "../galeria",
-  },
-  {
-    nombrePage: "Contactanos",
-    href: "../contactanos",
-  },
-  {
-    nombrePage: "Clientes",
-    href: "../clientes",
-  },
-  {
-    nombrePage: "Reportes",
-    href: "../reportes",
-  },
-  {
-    nombrePage: "Descargar",
-    href: "../reportesdescarga",
-  },
-  {
-    nombrePage: "Graficas",
-    href: "../Graficas",
-  },
-  
-];
-const settings = ["Perfil", "Cerrar sesión,"];
+const pages = {
+  admin: [
+    { nombrePage: "Inicio", href: "../" },
+    { nombrePage: "Clientes", href: "../clientes" },
+    { nombrePage: "Reportes", href: "../reportes" },
+    { nombrePage: "Descargar", href: "../reportesdescarga" },
+    { nombrePage: "Graficas", href: "../graficas" },
+    { nombrePage: "Agregar Empleado", href: "../agregarEmpleado" },
+    { nombrePage: "Editar Empleado", href: "../agregarEmpleado" },
+
+
+  ],
+  supervisor: [
+    { nombrePage: "Inicio", href: "../" },
+    { nombrePage: "Galeria", href: "../galeria" },
+    { nombrePage: "Servicios", href: "../servicios" },
+    { nombrePage: "Contactanos", href: "../contactanos" },
+    { nombrePage: "Reportes", href: "../reportes" },
+    { nombrePage: "Descargar", href: "../reportesdescarga" },
+  ],
+  cliente: [
+    { nombrePage: "Inicio", href: "../" },
+    { nombrePage: "Galeria", href: "../galeria" },
+    { nombrePage: "Servicios", href: "../servicios" },
+    { nombrePage: "Contactanos", href: "../contactanos" },
+  ],
+  default: [
+    { nombrePage: "Inicio", href: "../" },
+    { nombrePage: "Galeria", href: "../galeria" },
+    { nombrePage: "Servicios", href: "../servicios" },
+    { nombrePage: "Contactanos", href: "../contactanos" },
+    { nombrePage: "Iniciar Sesion", href: "../Login" },
+  ]
+};
 
 function Nav() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const handleNav = async () => {
-    window.location.href = "./agregarCliente";
+  const [userRole, setUserRole] = React.useState(localStorage.getItem('userRole'));
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName')); // Estado para el nombre del usuario
+  const [isAuthenticated, setIsAuthenticated] = React.useState(!!userRole);
+  const router = useRouter();
+
+  React.useEffect(() => {
+    const storedRole = localStorage.getItem('userRole');
+    const storedName = localStorage.getItem('userName');
+    if (storedRole) {
+      setUserRole(storedRole);
+      setUserName(storedName); // Establecer el nombre del usuario
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userName'); // Eliminar el nombre del usuario del localStorage
+    setUserRole(null);
+    setUserName(null); // Limpiar el estado del nombre del usuario
+    setIsAuthenticated(false);
+    router.push('/Login');
   };
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  const navPages = isAuthenticated ? pages[userRole] || pages.default : pages.default;
 
   return (
     <AppBar position="static" style={{ background: "#10754A" }}>
@@ -111,15 +110,15 @@ function Nav() {
               </div>
             </Grid>
 
-            <Grid item xs={12} lg={10}>
-              <Grid Container spacing={2} className="nav">
-                {pages.map((page) => (
-                  <Enlaces {...page} />
+            <Grid item xs={12} lg={8}>
+              <Grid container spacing={2} className="nav">
+                {navPages.map((page) => (
+                  <Enlaces key={page.nombrePage} {...page} />
                 ))}
               </Grid>
             </Grid>
 
-            <Grid item xs={12} lg={1}>
+            <Grid item xs={12} lg={3}>
               <div
                 style={{
                   display: "flex",
@@ -129,63 +128,19 @@ function Nav() {
                   marginBottom: "15px",
                 }}
               >
+                {isAuthenticated && (
+                  <Typography variant="body1" style={{ marginRight: '10px' }}>
+                    {userName}
+                  </Typography>
+                )}
+                {isAuthenticated && (
+                  <Button color="inherit" onClick={handleLogout}>
+                    Cerrar Sesión
+                  </Button>
+                )}
                 <Box sx={{ flexGrow: 0 }}>
                   <Tooltip title="Open settings">
-                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar
-                        alt="Remy Sharp"
-                        src="/static/images/avatar/2.jpg"
-                      />
-                    </IconButton>
                   </Tooltip>
-                  <Menu
-                    sx={{ mt: "45px" }}
-                    id="menu-appbar"
-                    anchorEl={anchorElUser}
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    open={Boolean(anchorElUser)}
-                    onClose={handleCloseUserMenu}
-                  >
-                    <MenuItem
-                      // key={setting}
-                      onClick={handleCloseUserMenu}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems:"flex-start"
-                        }}
-                      >
-                        <Button
-                          variant="body2"
-                          style={{
-                            color: "red",
-                          }}
-                          onClick={handleNav}
-                        >
-                          Cerrar Sesion
-                        </Button>
-                        <Button variant="body2" onClick={handleNav}>
-                          Agregar Empleado
-                        </Button>
-                        <Button variant="body2" onClick={handleNav}>
-                          Eliminar Empleado
-                        </Button>
-                        <Button variant="body2" onClick={handleNav}>
-                          Editar Empleado
-                        </Button>
-                      </div>
-                    </MenuItem>
-                  </Menu>
                 </Box>
               </div>
             </Grid>
@@ -195,4 +150,5 @@ function Nav() {
     </AppBar>
   );
 }
+
 export default Nav;
