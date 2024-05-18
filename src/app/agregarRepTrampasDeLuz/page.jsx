@@ -2,28 +2,85 @@
 import React, { useState } from "react";
 import { TextField, Button, styled, Stack, Grid, Box } from "@mui/material";
 import { PDFDocument, StandardFonts, values } from "pdf-lib";
+import LightTrapData from "../Organismos/LightTrapData";
 
 import "../../../css/globals.css";
 export default function agregarRepTrampasDeLuz() {
+  const [generatedPdf, setGeneratedPdf] = useState(null);
+
+  //datos de encabezado
+  const [cliente, setCliente] = useState("");
+  const [nombreResponsable, setNombreResponsable] = useState("");
+  const [nombreEspecialista, setNombreEspecialista] = useState("");
+  const [fechaServicio, setFechaServicio] = useState("");
+  const [areaServicio, setAreaServicio] = useState("");
+  const [folio, setFolio] = useState("");
+
+  const camposDeReporte = [
+    { name: "cliente", label: "Cliente", value: cliente, setValue: setCliente },
+    { name: "nombreResponsable", label: "Nombre del responsable", value: nombreResponsable, setValue: setNombreResponsable },
+    { name: "nombreEspecialista", label: "Nombre del especialista", value: nombreEspecialista, setValue: setNombreEspecialista },
+    { name: "fechaServicio", label: "Fecha de servicio", value: fechaServicio, setValue: setFechaServicio },
+    { name: "areaServicio", label: "Area de servicio", value: areaServicio, setValue: setAreaServicio },
+    { name: "folio", label: "Número de folio de orden de servicio", value: folio, setValue: setFolio },
+  ];
+
+  //datos de reportes
+  const [reportes, setReportes] = useState([
+    {
+      noReporte:0,
+      ubicacionEquipo:"",
+      accionRentokil:{
+        cp:false,
+        ld:false,
+        id:false,
+        cf:false
+      },
+      cantidadPlaga:{
+        mm:0,
+        mc:0,
+        md:0,
+        mj:0,
+        mf:0,
+        mp:0,
+        za:0,
+        mn:0,
+        ab:0,
+        ot1:0,
+        ot2:0,
+        ot3:0
+      },
+      accionCliente:{
+        la:false,
+        da:false,
+        ca:false,
+        lo:false,
+        otC:false,
+        nn:false
+      },
+      condicionEquipo:{
+        bn:false,
+        ob:false,
+        ne:false,
+        rc:false,
+        otE:false
+      },
+      comentarios:""
+    }
+  ])
 
   const ColorButton = styled(Button)(({ theme }) => ({
-    color: "black",
+    color: "white",
     backgroundColor: "#10754a",
     "&:hover": {
-      backgroundColor: "#D6D6D6",
+        color:"black",
+        backgroundColor: "#D6D6D6",
     },
   }));
 
-  const [nombre2, setNombre2] = useState("Coca cola");
-  const [generatedPdf, setGeneratedPdf] = useState(null);
-  const [tipoDeServicio, setTipoDeServicio] = useState("");
-
   const handleSubmit = async (event) => {
-    console.log(nombre2, firmaDelCliente, tipoDeServicio);
+    console.log(cliente, firmaDelCliente, tipoDeServicio);
   };
-  
-
-  
 
   const handlePdf = async (event) => {
     try {
@@ -40,12 +97,127 @@ export default function agregarRepTrampasDeLuz() {
       const { width, height } = firstPage.getSize();
       //traer la info de la bd
 
-      firstPage.drawText(nombre2, {
-        x: 120,
-        y: 524,
-        size: 8,
-        font: helveticaFont,
-      });
+      //datos de reporte
+      const camposPdfDeFecha = [
+        { name: "fechaServicio", x: 474, y: 460, size: 7 }
+      ];
+
+      const datosReporte = [
+        { name: "cliente", texto: cliente, x: 101, y: 475, size: 6 },
+        { name: "nombreResponsable", texto: nombreResponsable, x: 480, y: 475, size: 6 },
+        { name: "nombreEspecialista", texto: nombreEspecialista, x: 132, y: 460, size: 6 },
+        { name: "fechaServicio", texto: fechaServicio, x: 472, y: 460, size: 7 },
+        { name: "areaServicio", texto: areaServicio, x: 588, y: 460, size: 6 },
+        { name: "folio", texto: folio, x: 708, y: 460, size: 6 }
+      ];
+
+      for (const dato of datosReporte) {
+        let value = dato.texto;
+
+        const fechaCampo = camposPdfDeFecha.find(campo => campo.name === dato.name);
+        if (fechaCampo) {
+            const parts = value.split('-');
+            if (parts.length === 3) {
+                value = `${parts[2]} - ${parts[1]} - ${parts[0]}`;
+            }
+        }
+
+        firstPage.drawText(value, {
+            x: dato.x,
+            y: dato.y,
+            size: dato.size,
+            font: helveticaFont,
+        });
+      }
+
+
+      const columnasReportes = [
+          { label: "noReporte", x: 85, size: 6 },
+          { label: "ubicacionEquipo", x: 107, size: 6 },
+          // accionRentokil
+          { label: "cp", x: 195, size: 8 },
+          { label: "ld", x: 211, size: 8 },
+          { label: "id", x: 228, size: 8 },
+          { label: "cf", x: 244, size: 8 },
+          // cantidadPlaga
+          { label: "mm", x: 261, size: 6 },
+          { label: "mc", x: 279, size: 6 },
+          { label: "md", x: 299, size: 6 },
+          { label: "mj", x: 320, size: 6 },
+          { label: "mf", x: 338, size: 6 },
+          { label: "mp", x: 355, size: 6 },
+          { label: "za", x: 374, size: 6 },
+          { label: "mn", x: 392, size: 6 },
+          { label: "ab", x: 410, size: 6 },
+          { label: "ot1", x: 427, size: 6 },
+          { label: "ot2", x: 446, size: 6 },
+          { label: "ot3", x: 464, size: 6 },
+          // accionCliente
+          { label: "la", x: 481, size: 8 },
+          { label: "da", x: 498, size: 8 },
+          { label: "ca", x: 516, size: 8 },
+          { label: "lo", x: 534, size: 8 },
+          { label: "otC", x: 553, size: 8 },
+          { label: "nn", x: 571, size: 8 },
+          // condicionEquipo
+          { label: "bn", x: 590, size: 8 },
+          { label: "ob", x: 608, size: 8 },
+          { label: "ne", x: 628, size: 8 },
+          { label: "rc", x: 644, size: 8 },
+          { label: "otE", x: 662, size: 8 },
+          // comentarios
+          { label: "comentarios", x: 678, size: 6 },
+      ];
+
+      const getXPositionAndText = (reporte, columna) => {
+          const nestedObjects = ["accionRentokil", "accionCliente", "condicionEquipo"];
+          const cantidadPlagaLabels = [
+              "mm", "mc", "md", "mj", "mf", "mp", "za", "mn", "ab", "ot1", "ot2", "ot3"
+          ];
+
+          if (cantidadPlagaLabels.includes(columna.label)) {
+              return {
+                  x: columna.x,
+                  text: reporte.cantidadPlaga[columna.label].toString(),
+                  size: columna.size,
+              };
+          }
+
+          for (const obj of nestedObjects) {
+              if (reporte[obj] && reporte[obj].hasOwnProperty(columna.label)) {
+                  const value = reporte[obj][columna.label];
+                  return {
+                      x: columna.x,
+                      text: value === true ? "X" : "",
+                      size: columna.size,
+                  };
+              }
+          }
+
+          const value = reporte[columna.label];
+          return {
+              x: columna.x,
+              text: value != null ? value.toString() : '',
+              size: columna.size,
+          };
+      };
+
+      for (const [index, reporte] of reportes.entries()) {
+          const yCoordinate = 399 - 9.8 * index;
+
+          for (const columna of columnasReportes) {
+              const { x, text, size } = getXPositionAndText(reporte, columna);
+
+              if (text) {
+                  firstPage.drawText(text, {
+                      x,
+                      y: yCoordinate,
+                      size,
+                      font: helveticaFont,
+                  });
+              }
+          }
+      }
 
       const pdfBytes = await pdfDoc.save();
       setGeneratedPdf(pdfBytes); // Guarda los bytes del PDF generado en el estado local
@@ -81,7 +253,7 @@ export default function agregarRepTrampasDeLuz() {
           margin: "10px",
         }}
       >
-        <form onSubmit={handleSubmit} className="containerAgregarClientesFondo">
+        <form onSubmit={handleSubmit}>
           <Grid
             container
             direction={"row"}
@@ -133,29 +305,31 @@ export default function agregarRepTrampasDeLuz() {
             >
               <Grid
                 container
-                spacing={2}
                 direction={"row"}
+                spacing={2}
                 display={"flex"}
                 justifyContent={"center"}
+                xs={11}
+                style={{paddingTop:"2%"}}
               >
-                <Grid
-                  item
-                  xs={12}
-                  lg={3}
-                  display={"flex"}
-                  justifyContent={"center"}
-                >
-                  <TextField
-                    type="text"
-                    name="tipoDeServicio"
-                    placeholder="tipoDeServicio"
-                    fullWidth
-                    value={tipoDeServicio}
-                    onChange={(event) => {
-                      setTipoDeServicio(event.target.value);
-                    }}
-                  />
+                
+              <h2 className="form-subtitle">DATOS DE REPORTE</h2>
+              {camposDeReporte.map(({ name, label, value, setValue }, index) => (
+                <Grid item xs={10} lg={6} key={index}>
+                    <TextField
+                        type={name === "fechaServicio" ? "date" : "text"}
+                        name={name}
+                        label={label}
+                        fullWidth
+                        value={value}
+                        onChange={(event) => setValue(event.target.value)}
+                        InputLabelProps={name === "fechaServicio" ? { shrink: true } : {}}
+                    />
                 </Grid>
+              ))}
+
+              <LightTrapData lightTrapData={reportes} setLightTrapData={setReportes} />
+
               </Grid>
             </Grid>
 

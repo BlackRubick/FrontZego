@@ -1,54 +1,252 @@
 "use client";
 import React, { useState } from "react";
-import { TextField, Button, styled, Stack, Grid, Box } from "@mui/material";
+import { TextField, Button, styled, Stack, Grid, Box, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from "@mui/material";
+import InspectionData from "../Organismos/InspectionData";
 import { PDFDocument, StandardFonts, values } from "pdf-lib";
 
 import "../../../css/globals.css";
 export default function agregarRepNIvelPiso() {
+  const [generatedPdf, setGeneratedPdf] = useState(null);
+  //Datos del cliente
+  const [nombreCliente, setNombreCliente] = useState("");
+  const [direccion, setDireccion] = useState("");
+  const [tiendaNo, setTiendaNo] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [gerente, setGerente] = useState("");
+
+  const camposDeCliente = [
+    { name: "nombreCliente", label: "Nombre", value: nombreCliente, setValue: setNombreCliente },
+    { name: "direccion", label: "Dirección", value: direccion, setValue: setDireccion },
+    { name: "tiendaNo", label: "Tienda No.", value: tiendaNo, setValue: setTiendaNo },
+    { name: "telefono", label: "Teléfono", value: telefono, setValue: setTelefono },
+    { name: "gerente", label: "Gerente", value: gerente, setValue: setGerente }
+  ];
+
+  //Datos de la sucursal
+  const [folio, setFolio] = useState("");
+  const [bitacora, setBitacora] = useState("");
+  const [tecnico, setTecnico] = useState("");
+  const [tipoDeServicio, setTipoDeServicio] = useState("");
+  const [ruta, setRuta] = useState("");
+  const [ordenDeCompra, setOrdenDeCompra] = useState("");
+  const [queja, setQueja] = useState("");
+  const [inspeccion, setInspeccion] = useState("");
+
+  const camposDeSucursal = [
+    { name: "folio", label: "Folio SAV", value: folio, setValue: setFolio },
+    { name: "bitacora", label: "Bitacora", value: bitacora, setValue: setBitacora },
+    { name: "tecnico", label: "Técnico", value: tecnico, setValue: setTecnico },
+    { name: "tipoDeServicio", label: "Tipo de Servicio", value: tipoDeServicio, setValue: setTipoDeServicio },
+    { name: "ruta", label: "Ruta", value: ruta, setValue: setRuta },
+    { name: "ordenDeCompra", label: "Orden de Compra", value: ordenDeCompra, setValue: setOrdenDeCompra },
+    { name: "queja", label: "Queja", value: queja, setValue: setQueja },
+    { name: "inspeccion", label: "Inspección", value: inspeccion, setValue: setInspeccion }
+  ];
+
+  //datos de tiempo
+  const [horaEntrada, setHoraEntrada] = useState("");
+  const [horaSalida, setHoraSalida] = useState("");
+  const [fecha, setFecha] = useState("");
+
+  //datos de inspeccion
+  const [inspector, setInspector] = useState("");
+  const [inspecciones, setInspecciones] = useState([
+    {
+      area: "",
+      infestacionActiva: null,
+      plagaEncontrada: "",
+      condicionesHigiene: null,
+      correctivaRentokil: null,
+      correctivaCliente: null,
+      correccionRequerida: "",
+    }
+  ]);
+
+  const [comentarios, setComentarios] = useState("");
+  const [proximaVisita, setProximaVisita] = useState(null);
+  const [fechaVisita, setFechaVisita] = useState("");
+
+  const handleSubmit = async (event) => {
+    console.log(nombreCliente, firmaDelCliente, tipoDeServicio);
+  };
 
   const ColorButton = styled(Button)(({ theme }) => ({
-    color: "black",
+    color: "white",
     backgroundColor: "#10754a",
     "&:hover": {
-      backgroundColor: "#D6D6D6",
+        color:"black",
+        backgroundColor: "#D6D6D6",
     },
   }));
 
-  const [nombre2, setNombre2] = useState("Coca cola");
-  const [generatedPdf, setGeneratedPdf] = useState(null);
-  const [tipoDeServicio, setTipoDeServicio] = useState("");
-
-  const handleSubmit = async (event) => {
-    console.log(nombre2, firmaDelCliente, tipoDeServicio);
-  };
-  
-
-  
-
   const handlePdf = async (event) => {
     try {
-      const nombre2 = "Coca cola";
-
-      const url =
-        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475568/eduplanet/pdfs/j8lbxgypxofwxsplo9jo.pdf";
-      const existingPdfBytes = await fetch(url).then((res) =>
-        res.arrayBuffer()
-      );
-
+      const url = "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475568/eduplanet/pdfs/j8lbxgypxofwxsplo9jo.pdf";
+      const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
+  
       const pdfDoc = await PDFDocument.load(existingPdfBytes);
       const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
       const pages = pdfDoc.getPages();
       const firstPage = pages[0];
-      const { width, height } = firstPage.getSize();
-      //traer la info de la bd
-
-      firstPage.drawText(nombre2, {
-        x: 120,
-        y: 524,
-        size: 8,
-        font: helveticaFont,
-      });
-
+  
+      // Datos laborales
+      const camposPdfDeFechaLaboral = [
+        { name: "fecha", x: 140, y: 655, size: 6 }
+      ];
+  
+      const datosLaborales = [
+        { name: "horaEntrada", texto: horaEntrada, x: 140, y: 672, size: 6 },
+        { name: "horaSalida", texto: horaSalida, x: 140, y: 662, size: 6 },
+        { name: "fecha", texto: fecha, x: 140, y: 655, size: 6 }
+      ];
+  
+      for (const dato of datosLaborales) {
+        let value = dato.texto;
+  
+        if (value !== undefined) {
+          const fechaCampo = camposPdfDeFechaLaboral.find(campo => campo.name === dato.name);
+          if (fechaCampo) {
+            const parts = value.split('-');
+            if (parts.length === 3) {
+              value = `${parts[2]} - ${parts[1]} - ${parts[0]}`;
+            }
+          }
+  
+          firstPage.drawText(value, {
+            x: dato.x,
+            y: dato.y,
+            size: dato.size,
+            font: helveticaFont,
+          });
+        }
+      }
+  
+      // Datos de la sucursal
+      const datosSucursal = [
+        { texto: folio, x: 243, y: 663, size: 6 },
+        { texto: bitacora, x: 240, y: 655, size: 6 },
+        { texto: tecnico, x: 238, y: 648, size: 6 },
+        { texto: tipoDeServicio, x: 250, y: 641.5, size: 6 },
+        { texto: ruta, x: 230, y: 634.5, size: 6 },
+        { texto: ordenDeCompra, x: 313, y: 655, size: 6 },
+        { texto: queja, x: 313, y: 641.5, size: 6 },
+        { texto: inspeccion, x: 372, y: 641.5, size: 6 },
+      ];
+  
+      for (const dato of datosSucursal) {
+        if (dato.texto !== undefined) {
+          firstPage.drawText(dato.texto, {
+            x: dato.x,
+            y: dato.y,
+            size: dato.size,
+            font: helveticaFont,
+          });
+        }
+      }
+  
+      // Datos del cliente
+      const datosCliente = [
+        { texto: nombreCliente, x: 475, y: 663, size: 6 },
+        { texto: direccion, x: 475, y: 655, size: 6 },
+        { texto: tiendaNo, x: 475, y: 648, size: 6 },
+        { texto: telefono, x: 530, y: 648, size: 6 },
+        { texto: gerente, x: 475, y: 641.5, size: 6 },
+      ];
+  
+      for (const dato of datosCliente) {
+        if (dato.texto !== undefined) {
+          firstPage.drawText(dato.texto, {
+            x: dato.x,
+            y: dato.y,
+            size: dato.size,
+            font: helveticaFont,
+          });
+        }
+      }
+  
+      if (inspector !== undefined) {
+        firstPage.drawText(inspector, {
+          x: 78,
+          y: 615,
+          size: 6,
+          font: helveticaFont,
+        });
+      }
+  
+      const columnasInspecciones = [
+        { label: "area", x: 85 },
+        { label: "plagaEncontrada", x: 215 },
+        { label: "infestacionActiva", x: 174 },
+        { label: "condicionesHigiene", x: 294 },
+        { label: "correctivaRentokil", x: 359 },
+        { label: "correctivaCliente", x: 388 },
+        { label: "correccionRequerida", x: 410 },
+      ];
+  
+      const getXPositionAndText = (inspeccion, columna) => {
+        switch (columna.label) {
+          case "condicionesHigiene":
+            return { x: inspeccion.condicionesHigiene ? 294 : 328, text: 'X' };
+          case "infestacionActiva":
+            return { x: inspeccion.infestacionActiva ? 174 : 195, text: 'X' };
+          case "correctivaRentokil":
+            return { x: columna.x, text: inspeccion.correctivaRentokil ? 'X' : '' };
+          case "correctivaCliente":
+            return { x: columna.x, text: inspeccion.correctivaCliente ? 'X' : '' };
+          default:
+            return { x: columna.x, text: inspeccion[columna.label] !== null && inspeccion[columna.label] !== undefined ? inspeccion[columna.label].toString() : '' };
+        }
+      };
+  
+      for (const [index, inspeccion] of inspecciones.entries()) {
+        const yCoordinate = 563 - 13.5 * index;
+  
+        for (const columna of columnasInspecciones) {
+          const { x, text } = getXPositionAndText(inspeccion, columna);
+  
+          if (text !== '') {
+            firstPage.drawText(text, {
+              x: x,
+              y: yCoordinate,
+              size: 6,
+              font: helveticaFont,
+            });
+          }
+        }
+      }
+  
+      // Zona inferior
+      const camposPdfDeFecha = [
+        { name: "fechaVisita", x: 349, y: 256, size: 6 }
+      ];
+  
+      const datosVisita = [
+        { texto: comentarios, x: 80, y: 345, size: 6 },
+        { texto: "X", x: proximaVisita ? 211 : 270, y: 255.5, size: 8 },
+        { name: "fechaVisita", value: fechaVisita, x: 349, y: 256, size: 6 }
+      ];
+  
+      for (const dato of datosVisita) {
+        let value = dato.texto !== undefined ? dato.texto : dato.value;
+  
+        if (value !== undefined) {
+          const fechaCampo = camposPdfDeFecha.find(campo => campo.name === dato.name);
+          if (fechaCampo) {
+            const parts = value.split('-');
+            if (parts.length === 3) {
+              value = `${parts[2]} - ${parts[1]} - ${parts[0]}`;
+            }
+          }
+  
+          firstPage.drawText(value, {
+            x: dato.x,
+            y: dato.y,
+            size: dato.size,
+            font: helveticaFont,
+          });
+        }
+      }
+  
       const pdfBytes = await pdfDoc.save();
       setGeneratedPdf(pdfBytes); // Guarda los bytes del PDF generado en el estado local
       const pdfBlob = new Blob([pdfBytes], { type: "application/pdf" });
@@ -57,7 +255,7 @@ export default function agregarRepNIvelPiso() {
       console.error("Error al generar el PDF:", error);
     }
   };
-
+  
   return (
     <>
       <div
@@ -83,7 +281,7 @@ export default function agregarRepNIvelPiso() {
           margin: "10px",
         }}
       >
-        <form onSubmit={handleSubmit} className="containerAgregarClientesFondo">
+        <form onSubmit={handleSubmit}>
           <Grid
             container
             direction={"row"}
@@ -133,32 +331,159 @@ export default function agregarRepNIvelPiso() {
               display={"flex"}
               justifyContent={"center"}
             >
+
               <Grid
                 container
-                spacing={2}
                 direction={"row"}
+                spacing={2}
                 display={"flex"}
                 justifyContent={"center"}
+                xs={11}
+                style={{paddingTop:"2%"}}
               >
-                <Grid
-                  item
-                  xs={12}
-                  lg={3}
-                  display={"flex"}
-                  justifyContent={"center"}
-                >
+              <h2 className="form-subtitle">DATOS DEL CLIENTE</h2>
+              {camposDeCliente.map(({ name, label, value, setValue }, index) => (
+                  <Grid item xs={11} lg={6} key={index}>
+                      <TextField
+                          type="text"
+                          name={name}
+                          label={label}
+                          fullWidth
+                          value={value}
+                          onChange={(event) => setValue(event.target.value)}
+                      />
+                  </Grid>
+              ))}
+
+              <h2 className="form-subtitle">INFORMACIÓN DE LA SUCURSAL</h2>
+              {camposDeSucursal.map(({ name, label, value, setValue }, index) => (
+                  <Grid item xs={11} lg={6} key={index}>
+                      <TextField
+                          type="text"
+                          name={name}
+                          label={label}
+                          fullWidth
+                          value={value}
+                          onChange={(event) => setValue(event.target.value)}
+                      />
+                  </Grid>
+              ))}
+
+            <h2 className="form-subtitle">DATOS LABORALES</h2>
+            <Grid item xs={12} lg={4}>
                   <TextField
-                    type="text"
-                    name="tipoDeServicio"
-                    placeholder="tipoDeServicio"
-                    fullWidth
-                    value={tipoDeServicio}
-                    onChange={(event) => {
-                      setTipoDeServicio(event.target.value);
-                    }}
+                      type="time"
+                      name="horaEntrada"
+                      label="Hora de entrada"
+                      fullWidth
+                      value={horaEntrada}
+                      onChange={(event) => setHoraEntrada(event.target.value)}
+                      InputLabelProps={{
+                          shrink: true,
+                      }}
+                  />
+              </Grid>
+
+              <Grid item xs={12} lg={4}>
+                  <TextField
+                      type="time"
+                      name="horaSalida"
+                      label="Hora de salida"
+                      fullWidth
+                      value={horaSalida}
+                      onChange={(event) => setHoraSalida(event.target.value)}
+                      InputLabelProps={{
+                          shrink: true,
+                      }}
+                  />
+              </Grid>
+
+              <Grid item xs={12} lg={4}>
+                  <TextField
+                      type="date"
+                      name="fecha"
+                      label="Fecha"
+                      fullWidth
+                      value={fecha}
+                      onChange={(event) => setFecha(event.target.value)}
+                      InputLabelProps={{
+                          shrink: true,
+                      }}
+                  />
+              </Grid>
+
+              <h2 className="form-subtitle">DATOS DE INSPECCIÓN</h2>
+              <Grid item xs={12} lg={12}>
+                  <TextField
+                      type="text"
+                      name="inspector"
+                      label="Inspector"
+                      fullWidth
+                      value={inspector}
+                      onChange={(event) => setInspector(event.target.value)}
+                  />
+              </Grid>
+
+              <InspectionData inspectionData={inspecciones} setInspectionData={setInspecciones} />
+
+              <Grid item xs={12} lg={12}>
+                  <TextField
+                      type="text"
+                      name="comentarios"
+                      label="Comentarios adicionales"
+                      fullWidth
+                      value={comentarios}
+                      onChange={(event) => setComentarios(event.target.value)}
+                  />
+              </Grid>
+
+              <h2 className="form-subtitle">DATOS DE PRÓXIMA VISITA</h2>
+                <Grid item xs={12} lg={4}>
+                  <FormControl className="formLabel">
+                    <FormLabel component="legend">
+                      Próxima visita
+                    </FormLabel>
+                    <RadioGroup
+                      row
+                      aria-labelledby="demo-row-radio-buttons-group-label"
+                      name="row-radio-buttons-group"
+                    >
+                      <FormControlLabel
+                        value="Si"
+                        onChange={() => {
+                          setProximaVisita(true);
+                        }}
+                        control={<Radio />}
+                        label="SI"
+                      />
+                      <FormControlLabel
+                        value="No"
+                        control={<Radio />}
+                        onChange={() => {
+                          setProximaVisita(false);
+                        }}
+                        label="No"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+
+                <Grid item xs={12} lg={6}>
+                  <TextField
+                      type="date"
+                      name="fecha"
+                      label="Fecha"
+                      fullWidth
+                      value={fechaVisita}
+                      onChange={(event) => setFechaVisita(event.target.value)}
+                      InputLabelProps={{
+                          shrink: true,
+                      }}
                   />
                 </Grid>
-              </Grid>
+
+            </Grid>
+
             </Grid>
 
             <Grid
