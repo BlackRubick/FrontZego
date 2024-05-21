@@ -10,8 +10,6 @@ import {
   Autocomplete,
 } from "@mui/material";
 import { PDFDocument, StandardFonts, values } from "pdf-lib";
-import Checkbox from "@mui/material/Checkbox";
-import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
@@ -156,7 +154,7 @@ export default function agregarOrdenSencilla() {
         size: 10,
         font: helveticaFont,
       });
-
+     
       firstPage.drawText(name, {
         x: 100,
         y: 678,

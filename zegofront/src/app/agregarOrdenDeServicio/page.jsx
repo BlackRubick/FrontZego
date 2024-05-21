@@ -13,8 +13,7 @@ export default function agregarOrdenDeServicio() {
   const evaluacionDelServicio = "x";
   const noContrato = "212108";
   const noTelefono = "9611245569";
-  const loteCaducidad= "loteCaducidad";
-  const claveDeProducto= "claveDeProduc";
+  const loteCaducidad= "nombreDelProducto";
   const plagasAControlar = "plagasACont";
   const AreasTratadas= "AreasTratadas";
   const metodoUtilizado= "metodoUtiliz";
@@ -40,7 +39,7 @@ export default function agregarOrdenDeServicio() {
   const handlePdf = async (event) => {
     try {
       const url =
-        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475529/eduplanet/pdfs/cjjel4yde8j5jw6vju2e.pdf";
+        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1709224544/eduplanet/pdfs/pnvh7k8xddb7cf7unpid.pdf";
       const existingPdfBytes = await fetch(url).then((res) =>
         res.arrayBuffer()
       );
@@ -252,55 +251,50 @@ export default function agregarOrdenDeServicio() {
       // fila 6
      
       firstPage.drawText(loteCaducidad, {
-        x: 296,
+        x: 82,
         y: 449,
         size: 8,
         font: helveticaFont,
       });
-      firstPage.drawText(claveDeProducto, {
-        x: 354,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
+ 
       firstPage.drawText(plagasAControlar, {
-        x: 412,
+        x: 182,
         y: 449,
         size: 8,
         font: helveticaFont,
       });
       firstPage.drawText(AreasTratadas, {
-        x: 470,
+        x: 240,
         y: 449,
         size: 8,
         font: helveticaFont,
       });
       firstPage.drawText(metodoUtilizado, {
-        x: 528,
+        x: 325,
         y: 449,
         size: 8,
         font: helveticaFont,
       });
       firstPage.drawText(equipoUtilizado, {
-        x: 557,
+        x: 385,
         y: 449,
         size: 8,
         font: helveticaFont,
       });
       firstPage.drawText(Dosis, {
-        x: 586,
+        x: 470,
         y: 449,
         size: 8,
         font: helveticaFont,
       });
       firstPage.drawText(mezclaPreparada, {
-        x: 615,
+        x: 560,
         y: 449,
         size: 8,
         font: helveticaFont,
       });
       firstPage.drawText(AreaTratada, {
-        x: 644,
+        x: 645,
         y: 449,
         size: 8,
         font: helveticaFont,
@@ -308,7 +302,7 @@ export default function agregarOrdenDeServicio() {
 
       //fila 7
       firstPage.drawText(loteCaducidad, {
-        x: 296,
+        x: 82,
         y: 429,
         size: 8,
         font: helveticaFont,
@@ -316,7 +310,7 @@ export default function agregarOrdenDeServicio() {
       //fila 8
 
       firstPage.drawText(loteCaducidad, {
-        x: 80,
+        x: 82,
         y: 270,
         size: 8,
         font: helveticaFont,
@@ -435,7 +429,7 @@ export default function agregarOrdenDeServicio() {
             </Grid>
 
             <Grid
-              item
+              item 
               xs={12}
               display={"flex"}
               justifyContent={"center"}
