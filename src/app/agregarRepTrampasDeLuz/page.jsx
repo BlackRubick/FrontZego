@@ -7,7 +7,7 @@ import LightTrapData from "../Organismos/LightTrapData";
 import "../../../css/globals.css";
 export default function agregarRepTrampasDeLuz() {
   const [generatedPdf, setGeneratedPdf] = useState(null);
-<<<<<<< HEAD:zegofront/src/app/agregarOrdenDeServicio/page.jsx
+ HEAD:zegofront/src/app/agregarOrdenDeServicio/page.jsx
   const nombre2 = "Farmacia Super Santa Cruz ";
   const firmaDelCliente = "Jorge Emanuel";
   const direccionDelCliente = "2av Sur Ote";
@@ -22,8 +22,8 @@ export default function agregarRepTrampasDeLuz() {
   const Dosis= "Dosis";
   const mezclaPreparada= "mezclaPrepar";
   const AreaTratada= "AreaTrata";
-=======
->>>>>>> b5b1ae712bb4c5b3a85a0527ae38ccac01a0e950:src/app/agregarRepTrampasDeLuz/page.jsx
+ b5b1ae712bb4c5b3a85a0527ae38ccac01a0e950:src/app/agregarRepTrampasDeLuz/page.jsx
+
 
   //datos de encabezado
   const [cliente, setCliente] = useState("");
@@ -102,11 +102,14 @@ export default function agregarRepTrampasDeLuz() {
   const handlePdf = async (event) => {
     try {
       const url =
-<<<<<<< HEAD:zegofront/src/app/agregarOrdenDeServicio/page.jsx
+ HEAD:zegofront/src/app/agregarOrdenDeServicio/page.jsx
         "https://res.cloudinary.com/dpz2wx43s/image/upload/v1709224544/eduplanet/pdfs/pnvh7k8xddb7cf7unpid.pdf";
-=======
+
         "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475530/eduplanet/pdfs/cfzo2bk2eqmmqdvsy0ez.pdf";
->>>>>>> b5b1ae712bb4c5b3a85a0527ae38ccac01a0e950:src/app/agregarRepTrampasDeLuz/page.jsx
+ b5b1ae712bb4c5b3a85a0527ae38ccac01a0e950:src/app/agregarRepTrampasDeLuz/page.jsx
+
+        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475530/eduplanet/pdfs/cfzo2bk2eqmmqdvsy0ez.pdf";
+
       const existingPdfBytes = await fetch(url).then((res) =>
         res.arrayBuffer()
       );
@@ -123,7 +126,7 @@ export default function agregarRepTrampasDeLuz() {
         { name: "fechaServicio", x: 474, y: 460, size: 7 }
       ];
 
-<<<<<<< HEAD:zegofront/src/app/agregarOrdenDeServicio/page.jsx
+ HEAD:zegofront/src/app/agregarOrdenDeServicio/page.jsx
       //fila4
       firstPage.drawText(evaluacionDelServicio, {
         x: 157,
@@ -283,7 +286,7 @@ export default function agregarRepTrampasDeLuz() {
         size: 8,
         font: helveticaFont,
       });
-=======
+
       const datosReporte = [
         { name: "cliente", texto: cliente, x: 101, y: 475, size: 6 },
         { name: "nombreResponsable", texto: nombreResponsable, x: 480, y: 475, size: 6 },
@@ -400,7 +403,8 @@ export default function agregarRepTrampasDeLuz() {
               }
           }
       }
->>>>>>> b5b1ae712bb4c5b3a85a0527ae38ccac01a0e950:src/app/agregarRepTrampasDeLuz/page.jsx
+ b5b1ae712bb4c5b3a85a0527ae38ccac01a0e950:src/app/agregarRepTrampasDeLuz/page.jsx
+
 
       const pdfBytes = await pdfDoc.save();
       setGeneratedPdf(pdfBytes); // Guarda los bytes del PDF generado en el estado local
@@ -518,6 +522,7 @@ export default function agregarRepTrampasDeLuz() {
 
             <Grid
               item 
+
               xs={12}
               display={"flex"}
               justifyContent={"center"}

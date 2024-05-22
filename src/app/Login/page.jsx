@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation"; // Importa useRouter de Next.js
 import { TextField, Button, Grid, styled } from "@mui/material";
+
 import Stack from "@mui/material/Stack";
 import { Formik } from "formik";
 import { Padding } from "@mui/icons-material";
@@ -20,6 +21,7 @@ export default function Login() {
   }));
 
 
+
   const loginUser = async (values) => {
     try {
       const response = await axios.post(baseUrl, {
@@ -34,6 +36,7 @@ export default function Login() {
       if (mensaje === "Inicio de sesión exitoso") {
         localStorage.setItem("userRole", rol);
         localStorage.setItem("userName", nombre); // Guardar el nombre del usuario en localStorage
+
         router.push("/"); // Redirigir al Home después del inicio de sesión
       } else {
         alert("Correo o contraseña incorrectos");
@@ -61,7 +64,6 @@ export default function Login() {
           }}
           onSubmit={handleSubmit}
         >
-          
           <div className="containerLogin">
             <div className="padreImg">
               <div className="containerImgLogin"></div>
@@ -71,7 +73,9 @@ export default function Login() {
               <div>
                 <h1
                   style={{
+
                     fontSize: "40px",
+
                   }}
                 >
                   Inicia Sesión
@@ -111,6 +115,7 @@ export default function Login() {
                   <ColorButton variant="contained" type="submit">
                     Ingresar
                   </ColorButton>
+
                 </Stack>
               </div>
             </div>
