@@ -161,7 +161,7 @@ export default function agregarOrdenSencilla() {
         size: 10,
         font: helveticaFont,
       });
-     
+
       firstPage.drawText(name, {
         x: 100,
         y: 678,
@@ -182,7 +182,7 @@ export default function agregarOrdenSencilla() {
         size: 10,
         font: helveticaFont,
       });
-   
+
       firstPage.drawText(telefono, {
         x: 100,
         y: 634,
@@ -237,7 +237,7 @@ export default function agregarOrdenSencilla() {
         });
       }
 
-      if (desinfeccion){
+      if (desinfeccion) {
         firstPage.drawText("X", {
           x: 278,
           y: 559,
@@ -393,7 +393,7 @@ export default function agregarOrdenSencilla() {
           size: 10,
           font: helveticaFont,
         });
-      } else  if (!termoNebulizacion) {
+      } else if (!termoNebulizacion) {
         firstPage.drawText("X", {
           x: 266,
           y: 353,
@@ -517,7 +517,7 @@ export default function agregarOrdenSencilla() {
           font: helveticaFont,
         });
       }
-    
+
       firstPage.drawText(superficie, {
         x: 377,
         y: 216,
@@ -681,9 +681,8 @@ export default function agregarOrdenSencilla() {
                     display={"flex"}
                     justifyContent={"center"}
                   >
-
                     <h2 className="form-subtitle">DATOS DEL CLIENTE</h2>
-                  
+
                     <Grid item xs={12} lg={6}>
                       <TextField
                         type="text"
@@ -840,7 +839,7 @@ export default function agregarOrdenSencilla() {
                           setResto(event.target.value);
                         }}
                       />
-                    </Grid>   
+                    </Grid>
                     <Grid item xs={12} lg={6}>
                       <TextField
                         type="text"
@@ -1078,9 +1077,9 @@ export default function agregarOrdenSencilla() {
                         </RadioGroup>
                       </FormControl>
                     </Grid>
+                    <Grid item xs={12} lg={3}></Grid>
 
-               
-                  <h2 className="form-subtitle">SISTEMAS DE APLICACIÓN</h2>
+                    <h2 className="form-subtitle">SISTEMAS DE APLICACIÓN</h2>
 
                     <Grid item xs={12} lg={3}>
                       <FormControl className="formLabel">
@@ -1633,6 +1632,12 @@ export default function agregarOrdenSencilla() {
                           />
                         </RadioGroup>
                       </FormControl>
+                    </Grid>
+                    <Grid item xs={12} lg={3}>
+                    </Grid>
+                    <Grid item xs={12} lg={3}>
+                    </Grid>
+                    <Grid item xs={12} lg={3}>
                     </Grid>
 
                     <h2 className="form-subtitle">MATERIALES A UTILIZAR</h2>
