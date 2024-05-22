@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
-import axios from 'axios';
-import { useRouter } from 'next/navigation'; // Importa useRouter de Next.js
-import { TextField, Button } from "@mui/material";
+import axios from "axios";
+import { useRouter } from "next/navigation"; // Importa useRouter de Next.js
+import { TextField, Button, Grid, styled } from "@mui/material";
+
 import Stack from "@mui/material/Stack";
 import { Formik } from "formik";
 import { Padding } from "@mui/icons-material";
@@ -10,6 +11,16 @@ import { Padding } from "@mui/icons-material";
 export default function Login() {
   const baseUrl = "http://127.0.0.1:5000/login";
   const router = useRouter(); // Utiliza el hook useRouter
+  const ColorButton = styled(Button)(({ theme }) => ({
+    color: "white",
+    backgroundColor: "#10754a",
+    "&:hover": {
+        color:"black",
+        backgroundColor: "#D6D6D6",
+    },
+  }));
+
+
 
   const loginUser = async (values) => {
     try {
@@ -17,14 +28,15 @@ export default function Login() {
         correo: values.user,
         contraseña: values.password,
       });
-  
+
       const mensaje = response.data.mensaje;
       const rol = response.data.rol;
       const nombre = response.data.nombre; // Obtener el nombre del usuario del response
 
       if (mensaje === "Inicio de sesión exitoso") {
-        localStorage.setItem('userRole', rol);
-        localStorage.setItem('userName', nombre); // Guardar el nombre del usuario en localStorage
+        localStorage.setItem("userRole", rol);
+        localStorage.setItem("userName", nombre); // Guardar el nombre del usuario en localStorage
+
         router.push("/"); // Redirigir al Home después del inicio de sesión
       } else {
         alert("Correo o contraseña incorrectos");
@@ -61,41 +73,49 @@ export default function Login() {
               <div>
                 <h1
                   style={{
-                    fontSize: "50px",
+
+                    fontSize: "40px",
+
                   }}
                 >
                   Inicia Sesión
                 </h1>
               </div>
-              <div>
-                <TextField
-                  type="text"
-                  className="Entradas"
-                  placeholder="Correo"
-                  value={values.user}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  name="user" 
-                />
-                <br />
-                <br />
-                <br />
-                <TextField
-                  type="password"
-                  className="Entradas"
-                  placeholder="Contraseña"
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  name="password" 
-                />
-              </div>
-              <br /><br />
-              <div>
+              <Grid container direction={"row"} spacing={6}>
+                <Grid item xs={12}>
+                  <TextField
+                    type="text"
+                    className="Entradas"
+                    placeholder="Correo"
+                    value={values.user}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    name="user"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    type="password"
+                    className="Entradas"
+                    placeholder="Contraseña"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    name="password"
+                  />
+                </Grid>
+              </Grid>
+
+              <div
+                style={{
+                  margin: "20px",
+                }}
+              >
                 <Stack spacing={2} direction="row">
-                  <Button variant="contained" type="submit">
+                  <ColorButton variant="contained" type="submit">
                     Ingresar
-                  </Button>
+                  </ColorButton>
+
                 </Stack>
               </div>
             </div>
