@@ -7,23 +7,6 @@ import LightTrapData from "../Organismos/LightTrapData";
 import "../../../css/globals.css";
 export default function agregarRepTrampasDeLuz() {
   const [generatedPdf, setGeneratedPdf] = useState(null);
- HEAD:zegofront/src/app/agregarOrdenDeServicio/page.jsx
-  const nombre2 = "Farmacia Super Santa Cruz ";
-  const firmaDelCliente = "Jorge Emanuel";
-  const direccionDelCliente = "2av Sur Ote";
-  const evaluacionDelServicio = "x";
-  const noContrato = "212108";
-  const noTelefono = "9611245569";
-  const loteCaducidad= "nombreDelProducto";
-  const plagasAControlar = "plagasACont";
-  const AreasTratadas= "AreasTratadas";
-  const metodoUtilizado= "metodoUtiliz";
-  const equipoUtilizado= "equipoUtiliz";
-  const Dosis= "Dosis";
-  const mezclaPreparada= "mezclaPrepar";
-  const AreaTratada= "AreaTrata";
- b5b1ae712bb4c5b3a85a0527ae38ccac01a0e950:src/app/agregarRepTrampasDeLuz/page.jsx
-
 
   //datos de encabezado
   const [cliente, setCliente] = useState("");
@@ -102,14 +85,7 @@ export default function agregarRepTrampasDeLuz() {
   const handlePdf = async (event) => {
     try {
       const url =
- HEAD:zegofront/src/app/agregarOrdenDeServicio/page.jsx
-        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1709224544/eduplanet/pdfs/pnvh7k8xddb7cf7unpid.pdf";
-
         "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475530/eduplanet/pdfs/cfzo2bk2eqmmqdvsy0ez.pdf";
- b5b1ae712bb4c5b3a85a0527ae38ccac01a0e950:src/app/agregarRepTrampasDeLuz/page.jsx
-
-        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475530/eduplanet/pdfs/cfzo2bk2eqmmqdvsy0ez.pdf";
-
       const existingPdfBytes = await fetch(url).then((res) =>
         res.arrayBuffer()
       );
@@ -126,167 +102,6 @@ export default function agregarRepTrampasDeLuz() {
         { name: "fechaServicio", x: 474, y: 460, size: 7 }
       ];
 
- HEAD:zegofront/src/app/agregarOrdenDeServicio/page.jsx
-      //fila4
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 157,
-        y: 504,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 192,
-        y: 504,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 221,
-        y: 504,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 250,
-        y: 504,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 279,
-        y: 504,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 351,
-        y: 504,
-        size: 8,
-        font: helveticaFont,
-      });
-      //fila 5  
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 157,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 192,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 221,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 250,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 279,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 308,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 337,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 366,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(evaluacionDelServicio, {
-        x: 395,
-        y: 497,
-        size: 8,
-        font: helveticaFont,
-      });
-      // fila 6
-     
-      firstPage.drawText(loteCaducidad, {
-        x: 82,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
- 
-      firstPage.drawText(plagasAControlar, {
-        x: 182,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(AreasTratadas, {
-        x: 240,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(metodoUtilizado, {
-        x: 325,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(equipoUtilizado, {
-        x: 385,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(Dosis, {
-        x: 470,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(mezclaPreparada, {
-        x: 560,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-      firstPage.drawText(AreaTratada, {
-        x: 645,
-        y: 449,
-        size: 8,
-        font: helveticaFont,
-      });
-
-      //fila 7
-      firstPage.drawText(loteCaducidad, {
-        x: 82,
-        y: 429,
-        size: 8,
-        font: helveticaFont,
-      });
-      //fila 8
-
-      firstPage.drawText(loteCaducidad, {
-        x: 82,
-        y: 270,
-        size: 8,
-        font: helveticaFont,
-      });
-
       const datosReporte = [
         { name: "cliente", texto: cliente, x: 101, y: 475, size: 6 },
         { name: "nombreResponsable", texto: nombreResponsable, x: 480, y: 475, size: 6 },
@@ -301,10 +116,10 @@ export default function agregarRepTrampasDeLuz() {
 
         const fechaCampo = camposPdfDeFecha.find(campo => campo.name === dato.name);
         if (fechaCampo) {
-            const parts = value.split('-');
-            if (parts.length === 3) {
-                value = `${parts[2]} - ${parts[1]} - ${parts[0]}`;
-            }
+          const parts = value.split('-');
+          if (parts.length === 3) {
+              value = '${parts[2]} - ${parts[1]} - ${parts[0]}';
+          }
         }
 
         firstPage.drawText(value, {
@@ -403,8 +218,6 @@ export default function agregarRepTrampasDeLuz() {
               }
           }
       }
- b5b1ae712bb4c5b3a85a0527ae38ccac01a0e950:src/app/agregarRepTrampasDeLuz/page.jsx
-
 
       const pdfBytes = await pdfDoc.save();
       setGeneratedPdf(pdfBytes); // Guarda los bytes del PDF generado en el estado local
@@ -521,8 +334,7 @@ export default function agregarRepTrampasDeLuz() {
             </Grid>
 
             <Grid
-              item 
-
+              item
               xs={12}
               display={"flex"}
               justifyContent={"center"}

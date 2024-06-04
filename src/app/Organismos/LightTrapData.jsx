@@ -133,7 +133,7 @@ export default function LightTrapData({ lightTrapData, setLightTrapData }) {
                         </Grid>
 
                         <Grid item xs={12} lg={12}>
-                            <FormLabel component="legend">Acción por Rentokil</FormLabel>
+                            <FormLabel component="legend">Acción por Zego</FormLabel>
                         </Grid>
 
                         {[
