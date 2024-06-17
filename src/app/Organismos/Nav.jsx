@@ -18,7 +18,7 @@ const pages = {
     { nombrePage: "Clientes", href: "../clientes" },
     { nombrePage: "Reportes", href: "../reportes" },
     { nombrePage: "Descargar", href: "../reportesdescarga" },
-    { nombrePage: "Graficas", href: "../graficas" },
+    { nombrePage: "Graficas", href: "../Graficas" },
     { nombrePage: "Agregar Empleado", href: "../agregarEmpleado" },
     { nombrePage: "Editar Empleado", href: "../agregarEmpleado" },
 
@@ -37,6 +37,8 @@ const pages = {
     { nombrePage: "Galeria", href: "../galeria" },
     { nombrePage: "Servicios", href: "../servicios" },
     { nombrePage: "Contactanos", href: "../contactanos" },
+    { nombrePage: "Descargar", href: "../reportesdescarga" },
+
   ],
   default: [
     { nombrePage: "Inicio", href: "../" },

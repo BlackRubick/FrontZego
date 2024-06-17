@@ -20,8 +20,6 @@ export default function Login() {
     },
   }));
 
-
-
   const loginUser = async (values) => {
     try {
       const response = await axios.post(baseUrl, {

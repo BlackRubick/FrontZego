@@ -4,12 +4,12 @@ import "../../../css/globals.css";
 import Cardclient from "../Moleculas/CardClient";
 import { Button, Grid, Box, Autocomplete, TextField, styled, Stack } from "@mui/material";
 import axios from "axios";
-
 export default function Clientes() {
   const [region, setRegion] = useState([]);
   const [giroDeEmpresa, setGiroDeEmpresa] = useState([]);
   const [nombreDeEmpresa, setNombreDeEmpresa] = useState([]);
   const [clientes, setClientes] = useState([]);
+
 
   useEffect(() => {
     // Cargar regiones
