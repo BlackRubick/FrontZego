@@ -81,7 +81,7 @@ export default function agregarRepNIvelPiso() {
 
   const handlePdf = async (event) => {
     try {
-      const url = "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475568/eduplanet/pdfs/j8lbxgypxofwxsplo9jo.pdf";
+      const url = "https://res.cloudinary.com/dpz2wx43s/image/upload/v1719597284/newCesar/cumbladan418li4dupag.pdf";
       const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
   
       const pdfDoc = await PDFDocument.load(existingPdfBytes);
@@ -270,7 +270,7 @@ export default function agregarRepNIvelPiso() {
             marginTop: "10px",
           }}
         >
-          Agregar Orden De Servicio
+          Agregar Reporte Nivel Piso
         </h1>
       </div>
 

@@ -147,7 +147,7 @@ export default function agregarOrdenSencilla() {
       console.log(name);
       console.log(name);
       const url =
-        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1709695717/eduplanet/pdfs/wzbzcmvgi5jisamklfno.pdf";
+        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1719374439/cesarfiles/jmf1sv9aqoiwyz5gnixw.pdf";
       const existingPdfBytes = await fetch(url).then((res) =>
         res.arrayBuffer()
       );

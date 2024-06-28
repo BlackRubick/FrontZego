@@ -374,6 +374,28 @@ input[type="file"]::file-selector-button:hover {
 
 /* REPORTES */
 
+
+.containerClientesReportes {
+  display: flex;
+  width: 80%;
+  margin: 40px;
+  height: 850px;
+  padding: 20px;
+  box-shadow: -5px 6px 32px -3px rgba(0, 0, 0, 0.2);
+  border-color: #65717d;
+  border-radius: 5px;
+  color: #000;
+}
+
+@media (min-width: 768px) {
+  .containerClientesReportes {
+    width: 90%;
+    height: 100%;
+  }
+}
+
+
+
 .clientes-herramientasReportes {
   width: 20%;
   margin: 10px;

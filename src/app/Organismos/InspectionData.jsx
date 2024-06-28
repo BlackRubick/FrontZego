@@ -165,7 +165,7 @@ export default function InspectionData({ inspectionData, setInspectionData }) {
                                     <FormControlLabel
                                         value="correctivaRentokil"
                                         control={<Radio />}
-                                        label="Por Rentokil"
+                                        label="Por Zego"
                                     />
                                     <FormControlLabel
                                         value="correctivaCliente"

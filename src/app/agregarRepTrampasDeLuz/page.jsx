@@ -85,7 +85,7 @@ export default function agregarRepTrampasDeLuz() {
   const handlePdf = async (event) => {
     try {
       const url =
-        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1708475530/eduplanet/pdfs/cfzo2bk2eqmmqdvsy0ez.pdf";
+        "https://res.cloudinary.com/dpz2wx43s/image/upload/v1719597285/newCesar/rhqjzryzojxxrm8qki5k.pdf";
       const existingPdfBytes = await fetch(url).then((res) =>
         res.arrayBuffer()
       );
@@ -242,7 +242,7 @@ export default function agregarRepTrampasDeLuz() {
             marginTop: "10px",
           }}
         >
-          Agregar Orden De Servicio
+          Agregar Reporte Trampas De Luz
         </h1>
       </div>
 
