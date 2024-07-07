@@ -82,6 +82,8 @@ export default function agregarRepTrampasDeLuz() {
     console.log(cliente, firmaDelCliente, tipoDeServicio);
   };
 
+  //Aqui con esta url estamos guardando los datos }
+//Ojo esta es la url que tenemos que mandar para la base de datos para poder descargar
   const handlePdf = async (event) => {
     try {
       const url =

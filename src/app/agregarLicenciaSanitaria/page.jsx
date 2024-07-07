@@ -159,7 +159,8 @@ export default function AgregarLicenciaSanitaria() {
       setProducto5Seleccionado("");
     }
   };
-
+//Aqui con esta url estamos guardando los datos }
+//Ojo esta es la url que tenemos que mandar para la base de datos para poder descargar
   const handlePdf = async (event) => {
     event.preventDefault();
     try {
@@ -179,7 +180,8 @@ export default function AgregarLicenciaSanitaria() {
       const customFont = await pdfDoc.embedFont(fontBytes);
 
       const { width, height } = firstPage.getSize();
-      //traer la info de la bd
+      //aqui hacer la peticion de la bd para poder traer el nombre de la empresa solicitada 
+      
       const nombre2 = "Farmacia Super super largo";
       const cadena2 = "PonienteSur ";
       let nombreWidth = nombre2.length;

@@ -141,6 +141,9 @@ export default function agregarOrdenSencilla() {
   const [firmaDelCliente, setFirmaDelCliente] = useState("");
   const [otros, setOtros] = useState("");
 
+
+  //Aqui con esta url estamos guardando los datos }
+//Ojo esta es la url que tenemos que mandar para la base de datos para poder descargar
   const handlePdf = async (event) => {
     try {
       console.log(trampasDeGoma);

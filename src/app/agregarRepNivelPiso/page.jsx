@@ -78,7 +78,8 @@ export default function agregarRepNIvelPiso() {
         backgroundColor: "#D6D6D6",
     },
   }));
-
+//Aqui con esta url estamos guardando los datos }
+//Ojo esta es la url que tenemos que mandar para la base de datos para poder descargar
   const handlePdf = async (event) => {
     try {
       const url = "https://res.cloudinary.com/dpz2wx43s/image/upload/v1719597284/newCesar/cumbladan418li4dupag.pdf";
